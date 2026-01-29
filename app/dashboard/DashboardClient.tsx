@@ -119,6 +119,24 @@ export default function DashboardClient({
                                         </div>
 
                                         <div className="grid gap-4 text-left sm:grid-cols-[1fr_auto] sm:items-center">
+                                            <div className="space-y-3">
+                                                <motion.h1
+                                                    initial={{ opacity: 0, x: -20 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: 0.2, duration: 0.5 }}
+                                                    className="text-4xl md:text-5xl font-bold text-white"
+                                                >
+                                                    FusionPath
+                                                </motion.h1>
+                                                <motion.p
+                                                    initial={{ opacity: 0, x: -20 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: 0.3, duration: 0.5 }}
+                                                    className="text-base text-white/70"
+                                                >
+                                                    Welcome back, <span className="font-semibold text-white">{userName}</span>
+                                                </motion.p>
+                                            </div>
                                             <motion.div
                                                 initial={{ opacity: 0, y: -10 }}
                                                 animate={{ opacity: 1, y: 0 }}
