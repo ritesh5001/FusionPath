@@ -65,24 +65,26 @@ export default function DashboardClient({
                         variants={headerVariants}
                         className="flex flex-col gap-10"
                     >
-                        <div className="space-y-2 max-w-2xl">
-                            <motion.div
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.1, duration: 0.5 }}
-                                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-600 text-sm font-medium"
-                            >
-                                <span>🔥</span>
-                                <span>Top 100 LeetCode Questions</span>
-                            </motion.div>
-                            <motion.h1
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.2, duration: 0.5 }}
-                                className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white"
-                            >
-                                FusionPath
-                            </motion.h1>
+                        <div className="space-y-3 max-w-2xl">
+                            <div className="flex flex-wrap items-center gap-4">
+                                <motion.div
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.1, duration: 0.5 }}
+                                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-600 text-sm font-medium"
+                                >
+                                    <span>🔥</span>
+                                    <span>Top 100 LeetCode Questions</span>
+                                </motion.div>
+                                <motion.h1
+                                    initial={{ opacity: 0, x: -20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.2, duration: 0.5 }}
+                                    className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white"
+                                >
+                                    FusionPath
+                                </motion.h1>
+                            </div>
                             <motion.p
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
