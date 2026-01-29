@@ -11,6 +11,10 @@ export default function LoginPage() {
                 const password = String(formData.get("password") || "")
                 await signIn("credentials", { email, password, redirectTo: "/dashboard" })
             }}
+            googleSignInAction={async () => {
+                "use server"
+                await signIn("google", { redirectTo: "/dashboard" })
+            }}
         />
     )
 }
