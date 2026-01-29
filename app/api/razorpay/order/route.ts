@@ -21,26 +21,31 @@ export async function POST() {
     const amount = 10 * 100
     const currency = "INR"
 
-    const razorpay = new Razorpay({ key_id: keyId, key_secret: keySecret })
-    const order = await razorpay.orders.create({
-        amount,
-        currency,
-        receipt: `fusionpath_${session.user.id}_${Date.now()}`,
-    })
+    try {
+        const razorpay = new Razorpay({ key_id: keyId, key_secret: keySecret })
+        const order = await razorpay.orders.create({
+            amount,
+            currency,
+            receipt: `fusionpath_${session.user.id}_${Date.now()}`,
+        })
 
-    await dbConnect()
-    await Payment.create({
-        userId: session.user.id,
-        orderId: order.id,
-        amount,
-        currency,
-        status: "created",
-    })
+        await dbConnect()
+        await Payment.create({
+            userId: session.user.id,
+            orderId: order.id,
+            amount,
+            currency,
+            status: "created",
+        })
 
-    return Response.json({
-        orderId: order.id,
-        amount,
-        currency,
-        keyId,
-    })
+        return Response.json({
+            orderId: order.id,
+            amount,
+            currency,
+            keyId,
+        })
+    } catch (error) {
+        const message = error instanceof Error ? error.message : "Unknown error"
+        return new Response(`Razorpay order failed: ${message}`, { status: 500 })
+    }
 }

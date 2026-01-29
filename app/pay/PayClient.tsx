@@ -21,7 +21,10 @@ export default function PayClient() {
         setLoading(true)
         try {
             const response = await fetch("/api/razorpay/order", { method: "POST" })
-            if (!response.ok) throw new Error("Failed to create order")
+            if (!response.ok) {
+                const errorText = await response.text()
+                throw new Error(errorText || "Failed to create order")
+            }
             const data = await response.json()
 
             const options = {
@@ -55,8 +58,9 @@ export default function PayClient() {
 
             const razorpay = new window.Razorpay(options)
             razorpay.open()
-        } catch {
-            alert("Unable to start payment. Please try again.")
+        } catch (error) {
+            const message = error instanceof Error ? error.message : "Unable to start payment. Please try again."
+            alert(message)
         } finally {
             setLoading(false)
         }
