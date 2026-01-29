@@ -72,7 +72,7 @@ export default function DashboardClient({
                             <div className="relative rounded-4xl border border-white/10 bg-slate-950/85 p-6 shadow-[0_30px_80px_rgba(15,23,42,0.6)]">
                                 <div className="absolute inset-0 rounded-4xl bg-linear-to-br from-indigo-500/30 via-violet-500/20 to-cyan-500/20 blur-3xl opacity-60" aria-hidden="true" />
                                 <div className="relative flex flex-col gap-6">
-                                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+                                    <div className="flex flex-col gap-6">
                                         <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
                                             <div className="relative w-28 h-28 shrink-0">
                                                 <svg className="w-28 h-28 transform -rotate-90" viewBox="0 0 96 96">
@@ -118,26 +118,15 @@ export default function DashboardClient({
                                             </div>
                                         </div>
 
-                                        <div className="space-y-3 text-left lg:text-right">
-                                            <div className="flex flex-wrap items-center gap-4 lg:justify-end">
-                                                <motion.div
-                                                    initial={{ opacity: 0, y: -10 }}
-                                                    animate={{ opacity: 1, y: 0 }}
-                                                    transition={{ delay: 0.1, duration: 0.5 }}
-                                                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-linear-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-200 text-sm font-medium"
-                                                >
-                                                    <span>🔥</span>
-                                                    <span>Top 100 LeetCode Questions</span>
-                                                </motion.div>
-                                                <motion.h1
-                                                    initial={{ opacity: 0, x: -20 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ delay: 0.2, duration: 0.5 }}
-                                                    className="text-4xl md:text-5xl font-bold text-white"
-                                                >
-                                                    FusionPath
-                                                </motion.h1>
-                                            </div>
+                                        <div className="space-y-3">
+                                            <motion.h1
+                                                initial={{ opacity: 0, x: -20 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                transition={{ delay: 0.2, duration: 0.5 }}
+                                                className="text-4xl md:text-5xl font-bold text-white"
+                                            >
+                                                FusionPath
+                                            </motion.h1>
                                             <motion.p
                                                 initial={{ opacity: 0, x: -20 }}
                                                 animate={{ opacity: 1, x: 0 }}
@@ -146,17 +135,26 @@ export default function DashboardClient({
                                             >
                                                 Welcome back, <span className="font-semibold text-white">{userName}</span>
                                             </motion.p>
+                                            <motion.div
+                                                initial={{ opacity: 0, y: -10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: 0.35, duration: 0.5 }}
+                                                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-linear-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-200 text-sm font-medium"
+                                            >
+                                                <span>🔥</span>
+                                                <span>Top 100 LeetCode Questions</span>
+                                            </motion.div>
                                         </div>
                                     </div>
 
                                     <div className="flex flex-wrap gap-3">
                                         {([
-                                            { label: "Easy", value: `${difficultyStats.easy.completed}/${difficultyStats.easy.total}`, color: "bg-emerald-400/70" },
-                                            { label: "Medium", value: `${difficultyStats.medium.completed}/${difficultyStats.medium.total}`, color: "bg-amber-400/70" },
-                                            { label: "Hard", value: `${difficultyStats.hard.completed}/${difficultyStats.hard.total}`, color: "bg-rose-400/70" },
+                                            { label: "Easy", value: `${difficultyStats.easy.completed}/${difficultyStats.easy.total}`, color: "bg-emerald-400/70", dotColor: "bg-emerald-300" },
+                                            { label: "Medium", value: `${difficultyStats.medium.completed}/${difficultyStats.medium.total}`, color: "bg-amber-400/70", dotColor: "bg-amber-300" },
+                                            { label: "Hard", value: `${difficultyStats.hard.completed}/${difficultyStats.hard.total}`, color: "bg-rose-400/70", dotColor: "bg-rose-300" },
                                         ] as const).map(stat => (
                                             <div key={stat.label} className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-white bg-white/10 ${stat.color}`}>
-                                                <span className="w-2 h-2 rounded-full bg-white/90" />
+                                                <span className={`w-2 h-2 rounded-full ${stat.dotColor}`} />
                                                 <span>{stat.label}</span>
                                                 <span className="text-white/70">{stat.value}</span>
                                             </div>
