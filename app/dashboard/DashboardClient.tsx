@@ -65,36 +65,6 @@ export default function DashboardClient({
                         variants={headerVariants}
                         className="flex flex-col gap-10"
                     >
-                        <div className="space-y-3 max-w-2xl">
-                            <div className="flex flex-wrap items-center gap-4">
-                                <motion.div
-                                    initial={{ opacity: 0, y: -10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.1, duration: 0.5 }}
-                                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-linear-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-600 text-sm font-medium"
-                                >
-                                    <span>🔥</span>
-                                    <span>Top 100 LeetCode Questions</span>
-                                </motion.div>
-                                <motion.h1
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.2, duration: 0.5 }}
-                                    className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white"
-                                >
-                                    FusionPath
-                                </motion.h1>
-                            </div>
-                            <motion.p
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.3, duration: 0.5 }}
-                                className="text-base text-slate-600 dark:text-slate-300"
-                            >
-                                Welcome back, <span className="font-semibold text-slate-800 dark:text-slate-100">{userName}</span>
-                            </motion.p>
-                        </div>
-
                         <motion.div
                             variants={statsVariants}
                             className="w-full"
@@ -102,48 +72,80 @@ export default function DashboardClient({
                             <div className="relative rounded-4xl border border-white/10 bg-slate-950/85 p-6 shadow-[0_30px_80px_rgba(15,23,42,0.6)]">
                                 <div className="absolute inset-0 rounded-4xl bg-linear-to-br from-indigo-500/30 via-violet-500/20 to-cyan-500/20 blur-3xl opacity-60" aria-hidden="true" />
                                 <div className="relative flex flex-col gap-6">
-                                    <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
-                                        <div className="relative w-28 h-28 shrink-0">
-                                            <svg className="w-28 h-28 transform -rotate-90" viewBox="0 0 96 96">
-                                                <circle
-                                                    cx="48"
-                                                    cy="48"
-                                                    r="42"
-                                                    stroke="currentColor"
-                                                    strokeWidth="8"
-                                                    fill="none"
-                                                    className="text-slate-800"
-                                                />
-                                                <motion.circle
-                                                    cx="48"
-                                                    cy="48"
-                                                    r="42"
-                                                    stroke="url(#progressGradient)"
-                                                    strokeWidth="8"
-                                                    fill="none"
-                                                    strokeLinecap="round"
-                                                    initial={{ strokeDasharray: "264", strokeDashoffset: 264 }}
-                                                    animate={{ strokeDashoffset: 264 - (264 * progressPercentage) / 100 }}
-                                                    transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
-                                                />
-                                                <defs>
-                                                    <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                        <stop offset="0%" stopColor="#818cf8" />
-                                                        <stop offset="100%" stopColor="#a855f7" />
-                                                    </linearGradient>
-                                                </defs>
-                                            </svg>
-                                            <div className="absolute inset-0 flex items-center justify-center">
-                                                <span className="text-2xl font-semibold text-white">{progressPercentage}%</span>
+                                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+                                        <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+                                            <div className="relative w-28 h-28 shrink-0">
+                                                <svg className="w-28 h-28 transform -rotate-90" viewBox="0 0 96 96">
+                                                    <circle
+                                                        cx="48"
+                                                        cy="48"
+                                                        r="42"
+                                                        stroke="currentColor"
+                                                        strokeWidth="8"
+                                                        fill="none"
+                                                        className="text-slate-800"
+                                                    />
+                                                    <motion.circle
+                                                        cx="48"
+                                                        cy="48"
+                                                        r="42"
+                                                        stroke="url(#progressGradient)"
+                                                        strokeWidth="8"
+                                                        fill="none"
+                                                        strokeLinecap="round"
+                                                        initial={{ strokeDasharray: "264", strokeDashoffset: 264 }}
+                                                        animate={{ strokeDashoffset: 264 - (264 * progressPercentage) / 100 }}
+                                                        transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
+                                                    />
+                                                    <defs>
+                                                        <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                            <stop offset="0%" stopColor="#818cf8" />
+                                                            <stop offset="100%" stopColor="#a855f7" />
+                                                        </linearGradient>
+                                                    </defs>
+                                                </svg>
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <span className="text-2xl font-semibold text-white">{progressPercentage}%</span>
+                                                </div>
+                                            </div>
+
+                                            <div className="space-y-2">
+                                                <p className="text-xs uppercase tracking-[0.35em] text-white/60">Completion</p>
+                                                <div className="text-3xl font-semibold text-white">
+                                                    {totalCompleted} / {totalQuestions}
+                                                </div>
+                                                <p className="text-sm text-white/70">Problems solved across all topics</p>
                                             </div>
                                         </div>
 
-                                        <div className="flex-1 space-y-2">
-                                            <p className="text-xs uppercase tracking-[0.35em] text-white/60">Completion</p>
-                                            <div className="text-3xl font-semibold text-white">
-                                                {totalCompleted} / {totalQuestions}
+                                        <div className="space-y-3 text-left lg:text-right">
+                                            <div className="flex flex-wrap items-center gap-4 lg:justify-end">
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: -10 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ delay: 0.1, duration: 0.5 }}
+                                                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-linear-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-200 text-sm font-medium"
+                                                >
+                                                    <span>🔥</span>
+                                                    <span>Top 100 LeetCode Questions</span>
+                                                </motion.div>
+                                                <motion.h1
+                                                    initial={{ opacity: 0, x: -20 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: 0.2, duration: 0.5 }}
+                                                    className="text-4xl md:text-5xl font-bold text-white"
+                                                >
+                                                    FusionPath
+                                                </motion.h1>
                                             </div>
-                                            <p className="text-sm text-white/70">Problems solved across all topics</p>
+                                            <motion.p
+                                                initial={{ opacity: 0, x: -20 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                transition={{ delay: 0.3, duration: 0.5 }}
+                                                className="text-base text-white/70"
+                                            >
+                                                Welcome back, <span className="font-semibold text-white">{userName}</span>
+                                            </motion.p>
                                         </div>
                                     </div>
 
