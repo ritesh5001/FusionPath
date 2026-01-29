@@ -13,7 +13,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         strategy: "jwt",
     },
     providers: [
-        Google,
+        Google({ allowDangerousEmailAccountLinking: true }),
         Credentials({
             name: "Credentials",
             credentials: {
