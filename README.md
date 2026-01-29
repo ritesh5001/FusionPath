@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🔥 Top 100 LeetCode Tracker
 
-## Getting Started
+Track your progress on the most important 100 LeetCode questions for cracking tech interviews (6-10 LPA).
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38B2AC?style=flat-square&logo=tailwind-css)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green?style=flat-square&logo=mongodb)
+
+## ✨ Features
+
+- 📊 **100 Curated Questions** - Hand-picked most important LeetCode problems
+- 🎯 **8 Topic Categories** - Arrays, Two Pointers, Linked Lists, Stacks, Trees, Graphs, DP, and more
+- 📈 **Progress Tracking** - Track your completion with visual progress indicators
+- 🏷️ **Difficulty Labels** - Easy, Medium, Hard difficulty tags
+- 🔐 **Google Authentication** - Secure sign-in with Google OAuth
+- 🌓 **Dark Mode** - Automatic dark mode support
+- ⚡ **Smooth Animations** - Framer Motion powered UI
+- 📱 **Responsive Design** - Works on all devices
+
+## 🚀 Deploy to Vercel
+
+### Step 1: Push to GitHub
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git add .
+git commit -m "Ready for deployment"
+git push origin main
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Step 2: Deploy on Vercel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Go to [vercel.com](https://vercel.com) and sign in with GitHub
+2. Click "New Project" and import your repository
+3. Add Environment Variables (see below)
+4. Click "Deploy"
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Environment Variables Required
 
-## Learn More
+Add these in Vercel Project Settings → Environment Variables:
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Description |
+|----------|-------------|
+| `MONGODB_URI` | MongoDB Atlas connection string |
+| `AUTH_SECRET` | NextAuth.js secret (generate: `openssl rand -base64 32`) |
+| `AUTH_GOOGLE_ID` | Google OAuth Client ID |
+| `AUTH_GOOGLE_SECRET` | Google OAuth Client Secret |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Step 3: Update Google OAuth
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+After deployment, add your Vercel URL to Google Cloud Console:
+- Go to [Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+- Edit your OAuth 2.0 Client
+- Add authorized redirect URI: `https://your-app.vercel.app/api/auth/callback/google`
 
-## Deploy on Vercel
+### Step 4: Seed Database
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Visit `https://your-app.vercel.app/api/seed` to load all 100 questions.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠️ Local Development
+
+```bash
+# Install dependencies
+npm install
+
+# Copy environment variables
+cp .env.example .env
+# Edit .env with your credentials
+
+# Run development server
+npm run dev
+
+# Seed database
+# Visit http://localhost:3000/api/seed
+```
+
+## 📚 Topics Covered
+
+| # | Topic | Questions |
+|---|-------|-----------|
+| 1 | 📊 Arrays & Strings | 20 |
+| 2 | 👆 Two Pointers / Sliding Window | 10 |
+| 3 | 🔗 Linked Lists | 10 |
+| 4 | 📚 Stacks & Queues | 10 |
+| 5 | 🌳 Trees & BST | 15 |
+| 6 | 🕸️ Graphs | 10 |
+| 7 | 🧩 Dynamic Programming | 15 |
+| 8 | 🎯 Greedy / Binary Search / Misc | 10 |
+
+## 🧰 Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4
+- **Animation**: Framer Motion
+- **Database**: MongoDB Atlas
+- **Auth**: NextAuth.js v5 with Google OAuth
+- **Deployment**: Vercel
+
+---
+
+Made with ❤️ for aspiring developers preparing for tech interviews.
