@@ -9,6 +9,9 @@ import bcrypt from "bcryptjs"
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
     adapter: MongoDBAdapter(clientPromise),
+    session: {
+        strategy: "jwt",
+    },
     providers: [
         Google,
         Credentials({
@@ -39,12 +42,19 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         }),
     ],
     callbacks: {
-        async session({ session, user }) {
-            if (session.user) {
-                session.user.id = user.id;
-                session.user.isPaid = (user as { isPaid?: boolean }).isPaid ?? false;
+        async jwt({ token, user }) {
+            if (user) {
+                token.id = user.id
+                token.isPaid = (user as { isPaid?: boolean }).isPaid ?? false
             }
-            return session;
+            return token
+        },
+        async session({ session, token }) {
+            if (session.user) {
+                session.user.id = String(token.id || "")
+                session.user.isPaid = (token as { isPaid?: boolean }).isPaid ?? false
+            }
+            return session
         },
     },
     pages: {
