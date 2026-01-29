@@ -23,10 +23,13 @@ export async function POST() {
 
     try {
         const razorpay = new Razorpay({ key_id: keyId, key_secret: keySecret })
+        const shortUserId = String(session.user.id).slice(-10)
+        const shortTimestamp = Date.now().toString().slice(-8)
+        const receipt = `fp_${shortUserId}_${shortTimestamp}`
         const order = await razorpay.orders.create({
             amount,
             currency,
-            receipt: `fusionpath_${session.user.id}_${Date.now()}`,
+            receipt,
         })
 
         await dbConnect()
