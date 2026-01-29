@@ -140,6 +140,9 @@ export default function LoginClient({ signInAction, googleSignInAction, githubSi
                     </div>
 
                     <div className="grid gap-3">
+                        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">
+                            Continue with
+                        </p>
                         <motion.form action={googleSignInAction}>
                             <motion.button
                                 type="submit"
@@ -177,7 +180,7 @@ export default function LoginClient({ signInAction, googleSignInAction, githubSi
                                 initial="idle"
                                 whileHover="hover"
                                 whileTap="tap"
-                                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-slate-900 text-white rounded-2xl font-semibold text-base shadow-lg shadow-slate-900/20 hover:shadow-xl transition-shadow duration-300 dark:bg-black dark:text-white"
+                                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-white/90 text-slate-900 rounded-2xl font-semibold text-base shadow-lg shadow-slate-900/10 hover:shadow-xl transition-shadow duration-300 border border-slate-200/70 dark:bg-slate-950 dark:text-white dark:border-slate-700/60"
                             >
                                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                                     <path
