@@ -151,9 +151,9 @@ export default function DashboardClient({
 
                                     <div className="flex flex-wrap gap-3">
                                         {([
-                                            { label: "Easy", value: `${difficultyStats.easy.completed}/${difficultyStats.easy.total}`, color: "bg-emerald-400/70", dotColor: "bg-emerald-300" },
-                                            { label: "Medium", value: `${difficultyStats.medium.completed}/${difficultyStats.medium.total}`, color: "bg-amber-400/70", dotColor: "bg-amber-300" },
-                                            { label: "Hard", value: `${difficultyStats.hard.completed}/${difficultyStats.hard.total}`, color: "bg-rose-400/70", dotColor: "bg-rose-300" },
+                                            { label: "Easy", value: `${difficultyStats.easy.completed}/${difficultyStats.easy.total}`, color: "bg-emerald-400/70", dotColor: "bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.8)]" },
+                                            { label: "Medium", value: `${difficultyStats.medium.completed}/${difficultyStats.medium.total}`, color: "bg-amber-400/70", dotColor: "bg-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.8)]" },
+                                            { label: "Hard", value: `${difficultyStats.hard.completed}/${difficultyStats.hard.total}`, color: "bg-rose-400/70", dotColor: "bg-rose-400 shadow-[0_0_10px_rgba(244,63,94,0.8)]" },
                                         ] as const).map(stat => (
                                             <div key={stat.label} className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-white bg-white/10 ${stat.color}`}>
                                                 <span className={`w-2 h-2 rounded-full ${stat.dotColor}`} />
