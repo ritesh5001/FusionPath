@@ -93,107 +93,102 @@ export default function DashboardClient({
                             </motion.p>
                         </div>
 
-                            <div className="flex flex-col gap-4 sm:flex-row sm:items-center lg:items-start w-full lg:w-auto">
-                                <motion.div
-                                    variants={statsVariants}
-                                    className="w-full"
-                                >
-                                    <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-6 shadow-xl shadow-indigo-500/5 dark:shadow-indigo-500/5 border border-white/50 dark:border-slate-700/50">
-                                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                                            {/* Circular Progress */}
-                                            <div className="relative w-24 h-24 flex-shrink-0">
-                                                <svg className="w-24 h-24 transform -rotate-90">
-                                                    <circle
-                                                        cx="48"
-                                                        cy="48"
-                                                        r="42"
-                                                        stroke="currentColor"
-                                                        strokeWidth="8"
-                                                        fill="none"
-                                                        className="text-slate-100 dark:text-slate-800"
-                                                    />
-                                                    <motion.circle
-                                                        cx="48"
-                                                        cy="48"
-                                                        r="42"
-                                                        stroke="url(#progressGradient)"
-                                                        strokeWidth="8"
-                                                        fill="none"
-                                                        strokeLinecap="round"
-                                                        initial={{ strokeDasharray: "264", strokeDashoffset: 264 }}
-                                                        animate={{ strokeDashoffset: 264 - (264 * progressPercentage) / 100 }}
-                                                        transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
-                                                    />
-                                                    <defs>
-                                                        <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                            <stop offset="0%" stopColor="#6366f1" />
-                                                            <stop offset="100%" stopColor="#8b5cf6" />
-                                                        </linearGradient>
-                                                    </defs>
-                                                </svg>
-                                                <div className="absolute inset-0 flex items-center justify-center">
-                                                    <span className="text-xl font-bold text-slate-900 dark:text-white">{progressPercentage}%</span>
-                                                </div>
-                                            </div>
-
-                                            <div className="space-y-3">
-                                                <div>
-                                                    <div className="text-2xl font-bold text-slate-900 dark:text-white">
-                                                        {totalCompleted} / {totalQuestions}
-                                                    </div>
-                                                    <div className="text-sm text-slate-500 dark:text-slate-400">
-                                                        Problems Solved
-                                                    </div>
-                                                </div>
-
-                                                {/* Difficulty breakdown */}
-                                                <div className="flex gap-4 text-xs">
-                                                    <div className="flex items-center gap-1.5">
-                                                        <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                                                        <span className="text-slate-600 dark:text-slate-400">Easy</span>
-                                                        <span className="font-semibold text-slate-900 dark:text-white">{difficultyStats.easy.completed}/{difficultyStats.easy.total}</span>
-                                                    </div>
-                                                    <div className="flex items-center gap-1.5">
-                                                        <span className="w-2 h-2 rounded-full bg-amber-500"></span>
-                                                        <span className="text-slate-600 dark:text-slate-400">Med</span>
-                                                        <span className="font-semibold text-slate-900 dark:text-white">{difficultyStats.medium.completed}/{difficultyStats.medium.total}</span>
-                                                    </div>
-                                                    <div className="flex items-center gap-1.5">
-                                                        <span className="w-2 h-2 rounded-full bg-red-500"></span>
-                                                        <span className="text-slate-600 dark:text-slate-400">Hard</span>
-                                                        <span className="font-semibold text-slate-900 dark:text-white">{difficultyStats.hard.completed}/{difficultyStats.hard.total}</span>
-                                                    </div>
-                                                </div>
+                        <motion.div
+                            variants={statsVariants}
+                            className="relative w-full max-w-lg"
+                        >
+                            <div className="absolute inset-0 rounded-[32px] bg-gradient-to-br from-indigo-500/40 via-violet-500/30 to-cyan-500/30 blur-3xl opacity-70" aria-hidden="true" />
+                            <div className="relative rounded-[32px] border border-white/10 bg-slate-950/90 p-6 shadow-[0_25px_60px_rgba(15,23,42,0.45)]">
+                                <div className="flex flex-col gap-6">
+                                    <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
+                                        <div className="relative w-28 h-28 flex-shrink-0">
+                                            <svg className="w-28 h-28 transform -rotate-90" viewBox="0 0 96 96">
+                                                <circle
+                                                    cx="48"
+                                                    cy="48"
+                                                    r="42"
+                                                    stroke="currentColor"
+                                                    strokeWidth="8"
+                                                    fill="none"
+                                                    className="text-slate-800"
+                                                />
+                                                <motion.circle
+                                                    cx="48"
+                                                    cy="48"
+                                                    r="42"
+                                                    stroke="url(#progressGradient)"
+                                                    strokeWidth="8"
+                                                    fill="none"
+                                                    strokeLinecap="round"
+                                                    initial={{ strokeDasharray: "264", strokeDashoffset: 264 }}
+                                                    animate={{ strokeDashoffset: 264 - (264 * progressPercentage) / 100 }}
+                                                    transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
+                                                />
+                                                <defs>
+                                                    <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                        <stop offset="0%" stopColor="#818cf8" />
+                                                        <stop offset="100%" stopColor="#a855f7" />
+                                                    </linearGradient>
+                                                </defs>
+                                            </svg>
+                                            <div className="absolute inset-0 flex items-center justify-center">
+                                                <span className="text-2xl font-semibold text-white">{progressPercentage}%</span>
                                             </div>
                                         </div>
-                                    </div>
-                                </motion.div>
 
-                                <motion.form
-                                    action={logoutAction}
-                                    method="post"
-                                    initial={{ opacity: 0, y: -10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
-                                    className="w-full sm:w-auto flex justify-end"
-                                >
-                                    <motion.button
-                                        type="submit"
-                                        variants={buttonVariants}
-                                        initial="idle"
-                                        whileHover="hover"
-                                        whileTap="tap"
-                                        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-2xl font-semibold shadow-xl shadow-red-500/40 hover:shadow-2xl transition-shadow duration-300"
-                                        aria-label="Sign out"
+                                        <div className="flex-1 space-y-3">
+                                            <p className="text-sm uppercase tracking-[0.25em] text-white/60">Completion</p>
+                                            <div className="text-3xl font-semibold text-white">
+                                                {totalCompleted} / {totalQuestions}
+                                            </div>
+                                            <p className="text-sm text-white/60">Problems solved across all topics</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex flex-wrap gap-3">
+                                        {([
+                                            { label: "Easy", value: `${difficultyStats.easy.completed}/${difficultyStats.easy.total}`, color: "bg-emerald-400/80" },
+                                            { label: "Medium", value: `${difficultyStats.medium.completed}/${difficultyStats.medium.total}`, color: "bg-amber-400/80" },
+                                            { label: "Hard", value: `${difficultyStats.hard.completed}/${difficultyStats.hard.total}`, color: "bg-rose-400/80" },
+                                        ] as const).map(stat => (
+                                            <div key={stat.label} className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-white bg-white/5 ${stat.color}`}>
+                                                <span className="w-2 h-2 rounded-full bg-white/80" />
+                                                <span>{stat.label}</span>
+                                                <span className="text-white/70">{stat.value}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className="text-sm text-slate-300">
+                                        <span className="text-white/80">Overall progress</span> · {progressPercentage}% of the Top 100 set completed
+                                    </div>
+
+                                    <motion.form
+                                        action={logoutAction}
+                                        method="post"
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
+                                        className="flex justify-end"
                                     >
-                                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-                                            <path d="M17 16l4-4m0 0l-4-4m4 4H7" />
-                                            <path d="M7 8v-2a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h1a2 2 0 002-2v-2" />
-                                        </svg>
-                                        Sign out
-                                    </motion.button>
-                                </motion.form>
+                                        <motion.button
+                                            type="submit"
+                                            variants={buttonVariants}
+                                            initial="idle"
+                                            whileHover="hover"
+                                            whileTap="tap"
+                                            className="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 text-sm font-semibold text-white backdrop-blur"
+                                        >
+                                            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                                                <path d="M17 16l4-4m0 0l-4-4m4 4H7" />
+                                                <path d="M7 8v-2a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h1a2 2 0 002-2v-2" />
+                                            </svg>
+                                            Sign out
+                                        </motion.button>
+                                    </motion.form>
+                                </div>
                             </div>
+                        </motion.div>
                     </motion.div>
 
                     {/* Topic Cards */}
