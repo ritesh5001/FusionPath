@@ -45,7 +45,7 @@ export default function DashboardClient({
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50/20 to-violet-50/30 dark:from-slate-950 dark:via-indigo-950/20 dark:to-violet-950/30">
+        <div className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50/20 to-violet-50/30 dark:from-slate-950 dark:via-indigo-950/20 dark:to-violet-950/30">
             {/* Decorative background elements */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-200/20 dark:bg-indigo-900/10 rounded-full blur-3xl" />
@@ -71,7 +71,7 @@ export default function DashboardClient({
                                     initial={{ opacity: 0, y: -10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.1, duration: 0.5 }}
-                                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-600 text-sm font-medium"
+                                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-linear-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-600 text-sm font-medium"
                                 >
                                     <span>🔥</span>
                                     <span>Top 100 LeetCode Questions</span>
@@ -99,11 +99,11 @@ export default function DashboardClient({
                             variants={statsVariants}
                             className="w-full"
                         >
-                            <div className="relative rounded-[32px] border border-white/10 bg-slate-950/85 p-6 shadow-[0_30px_80px_rgba(15,23,42,0.6)]">
-                                <div className="absolute inset-0 rounded-[32px] bg-gradient-to-br from-indigo-500/30 via-violet-500/20 to-cyan-500/20 blur-3xl opacity-60" aria-hidden="true" />
+                            <div className="relative rounded-4xl border border-white/10 bg-slate-950/85 p-6 shadow-[0_30px_80px_rgba(15,23,42,0.6)]">
+                                <div className="absolute inset-0 rounded-4xl bg-linear-to-br from-indigo-500/30 via-violet-500/20 to-cyan-500/20 blur-3xl opacity-60" aria-hidden="true" />
                                 <div className="relative flex flex-col gap-6">
                                     <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
-                                        <div className="relative w-28 h-28 flex-shrink-0">
+                                        <div className="relative w-28 h-28 shrink-0">
                                             <svg className="w-28 h-28 transform -rotate-90" viewBox="0 0 96 96">
                                                 <circle
                                                     cx="48"
@@ -217,7 +217,7 @@ export default function DashboardClient({
                                         <CardHeader className="pb-3 border-b border-slate-100 dark:border-slate-800">
                                             <CardTitle className="text-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                                                 <div className="flex items-center gap-3">
-                                                    <span className={`flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${topicData.color} text-white text-xl shadow-lg`}>
+                                                    <span className={`flex items-center justify-center w-12 h-12 rounded-xl bg-linear-to-br ${topicData.color} text-white text-xl shadow-lg`}>
                                                         {topicData.icon}
                                                     </span>
                                                     <div>
@@ -232,7 +232,7 @@ export default function DashboardClient({
                                                     <div className="flex items-center gap-2">
                                                         <div className="w-24 h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
                                                             <motion.div
-                                                                className={`h-full bg-gradient-to-r ${topicData.color} rounded-full`}
+                                                                className={`h-full bg-linear-to-r ${topicData.color} rounded-full`}
                                                                 initial={{ width: 0 }}
                                                                 animate={{ width: `${topicProgress}%` }}
                                                                 transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 + index * 0.1 }}
@@ -287,7 +287,7 @@ export default function DashboardClient({
                                     initial="idle"
                                     whileHover="hover"
                                     whileTap="tap"
-                                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-500 to-violet-600 text-white rounded-xl font-semibold shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/40 transition-shadow"
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-indigo-500 to-violet-600 text-white rounded-xl font-semibold shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/40 transition-shadow"
                                 >
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
