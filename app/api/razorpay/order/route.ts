@@ -45,9 +45,16 @@ export async function POST() {
             keyId,
         })
     } catch (error) {
-        const message = error instanceof Error ? error.message : "Unknown error"
+        let message = error instanceof Error ? error.message : "Unknown error"
         const details = typeof error === "object" && error !== null ? (error as Record<string, unknown>) : null
         const razorpayError = (details?.error as Record<string, unknown>) ?? null
+        if (message === "Unknown error") {
+            try {
+                message = JSON.stringify(error)
+            } catch {
+                message = "Unknown error"
+            }
+        }
 
         console.error("Razorpay order failed", {
             message,
