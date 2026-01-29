@@ -195,6 +195,11 @@ export default function PayClient({ logoutAction }: PayClientProps) {
                                 <p>🔒 Secure payment • Card / UPI / Netbanking</p>
                                 <p>✅ After payment, you are redirected to your dashboard.</p>
                                 <p>Need help? Email nextgenfusion.dev@gmail.com</p>
+                                <p>
+                                    <a href="/refund-policy" className="font-semibold text-indigo-600 dark:text-indigo-300 hover:underline">Refund policy</a>
+                                    <span className="mx-2">•</span>
+                                    <a href="/privacy-policy" className="font-semibold text-indigo-600 dark:text-indigo-300 hover:underline">Privacy policy</a>
+                                </p>
                             </div>
                         </div>
                     </div>
