@@ -22,8 +22,15 @@ export default function PayClient() {
         try {
             const response = await fetch("/api/razorpay/order", { method: "POST" })
             if (!response.ok) {
-                const errorText = await response.text()
-                throw new Error(errorText || "Failed to create order")
+                let errorMessage = "Failed to create order"
+                try {
+                    const errorJson = await response.json()
+                    errorMessage = errorJson?.message || errorJson?.error || errorMessage
+                } catch {
+                    const errorText = await response.text()
+                    if (errorText) errorMessage = errorText
+                }
+                throw new Error(errorMessage)
             }
             const data = await response.json()
 

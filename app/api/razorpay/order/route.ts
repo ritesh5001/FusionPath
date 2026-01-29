@@ -46,6 +46,21 @@ export async function POST() {
         })
     } catch (error) {
         const message = error instanceof Error ? error.message : "Unknown error"
-        return new Response(`Razorpay order failed: ${message}`, { status: 500 })
+        const details = typeof error === "object" && error !== null ? (error as Record<string, unknown>) : null
+        const razorpayError = (details?.error as Record<string, unknown>) ?? null
+
+        console.error("Razorpay order failed", {
+            message,
+            razorpayError,
+        })
+
+        return Response.json(
+            {
+                error: "Razorpay order failed",
+                message,
+                razorpayError,
+            },
+            { status: 500 }
+        )
     }
 }
