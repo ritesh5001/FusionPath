@@ -1,5 +1,5 @@
 
-import { auth } from "@/auth"
+import { auth, signOut } from "@/auth"
 import { redirect } from "next/navigation"
 import dbConnect from "@/lib/mongodb"
 import Question from "@/models/Question"
@@ -82,6 +82,12 @@ export default async function Dashboard() {
                 medium: { total: mediumTotal, completed: mediumCompleted },
                 hard: { total: hardTotal, completed: hardCompleted },
             }}
+            logoutAction={logoutAction}
         />
     )
+}
+
+async function logoutAction() {
+    "use server"
+    await signOut({ redirectTo: "/login" })
 }

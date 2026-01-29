@@ -9,7 +9,6 @@ import {
     cardVariants,
     headerVariants,
     statsVariants,
-    progressVariants,
     buttonVariants,
 } from "@/lib/animations"
 import { TOPICS } from "@/lib/data"
@@ -28,6 +27,7 @@ interface DashboardClientProps {
     totalQuestions: number
     progressPercentage: number
     difficultyStats: DifficultyStats
+    logoutAction: () => Promise<void>
 }
 
 export default function DashboardClient({
@@ -38,6 +38,7 @@ export default function DashboardClient({
     totalQuestions,
     progressPercentage,
     difficultyStats,
+    logoutAction,
 }: DashboardClientProps) {
     const getTopicData = (topicName: string) => {
         return TOPICS.find(t => t.name === topicName) || { icon: "📝", color: "from-gray-500 to-gray-600" }
@@ -62,7 +63,7 @@ export default function DashboardClient({
                     {/* Header Section */}
                     <motion.div
                         variants={headerVariants}
-                        className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6"
+                        className="flex flex-col lg:flex-row justify-between items-start lg:items-start gap-6"
                     >
                         <div className="space-y-2">
                             <motion.div
@@ -92,81 +93,107 @@ export default function DashboardClient({
                             </motion.p>
                         </div>
 
-                        {/* Stats Card */}
-                        <motion.div
-                            variants={statsVariants}
-                            className="w-full lg:w-auto"
-                        >
-                            <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-6 shadow-xl shadow-indigo-500/5 dark:shadow-indigo-500/5 border border-white/50 dark:border-slate-700/50">
-                                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                                    {/* Circular Progress */}
-                                    <div className="relative w-24 h-24 flex-shrink-0">
-                                        <svg className="w-24 h-24 transform -rotate-90">
-                                            <circle
-                                                cx="48"
-                                                cy="48"
-                                                r="42"
-                                                stroke="currentColor"
-                                                strokeWidth="8"
-                                                fill="none"
-                                                className="text-slate-100 dark:text-slate-800"
-                                            />
-                                            <motion.circle
-                                                cx="48"
-                                                cy="48"
-                                                r="42"
-                                                stroke="url(#progressGradient)"
-                                                strokeWidth="8"
-                                                fill="none"
-                                                strokeLinecap="round"
-                                                initial={{ strokeDasharray: "264", strokeDashoffset: 264 }}
-                                                animate={{ strokeDashoffset: 264 - (264 * progressPercentage) / 100 }}
-                                                transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
-                                            />
-                                            <defs>
-                                                <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                    <stop offset="0%" stopColor="#6366f1" />
-                                                    <stop offset="100%" stopColor="#8b5cf6" />
-                                                </linearGradient>
-                                            </defs>
+                            <div className="flex flex-col gap-4 sm:flex-row sm:items-center lg:items-start w-full lg:w-auto">
+                                <motion.div
+                                    variants={statsVariants}
+                                    className="w-full"
+                                >
+                                    <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-2xl p-6 shadow-xl shadow-indigo-500/5 dark:shadow-indigo-500/5 border border-white/50 dark:border-slate-700/50">
+                                        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                                            {/* Circular Progress */}
+                                            <div className="relative w-24 h-24 flex-shrink-0">
+                                                <svg className="w-24 h-24 transform -rotate-90">
+                                                    <circle
+                                                        cx="48"
+                                                        cy="48"
+                                                        r="42"
+                                                        stroke="currentColor"
+                                                        strokeWidth="8"
+                                                        fill="none"
+                                                        className="text-slate-100 dark:text-slate-800"
+                                                    />
+                                                    <motion.circle
+                                                        cx="48"
+                                                        cy="48"
+                                                        r="42"
+                                                        stroke="url(#progressGradient)"
+                                                        strokeWidth="8"
+                                                        fill="none"
+                                                        strokeLinecap="round"
+                                                        initial={{ strokeDasharray: "264", strokeDashoffset: 264 }}
+                                                        animate={{ strokeDashoffset: 264 - (264 * progressPercentage) / 100 }}
+                                                        transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
+                                                    />
+                                                    <defs>
+                                                        <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                            <stop offset="0%" stopColor="#6366f1" />
+                                                            <stop offset="100%" stopColor="#8b5cf6" />
+                                                        </linearGradient>
+                                                    </defs>
+                                                </svg>
+                                                <div className="absolute inset-0 flex items-center justify-center">
+                                                    <span className="text-xl font-bold text-slate-900 dark:text-white">{progressPercentage}%</span>
+                                                </div>
+                                            </div>
+
+                                            <div className="space-y-3">
+                                                <div>
+                                                    <div className="text-2xl font-bold text-slate-900 dark:text-white">
+                                                        {totalCompleted} / {totalQuestions}
+                                                    </div>
+                                                    <div className="text-sm text-slate-500 dark:text-slate-400">
+                                                        Problems Solved
+                                                    </div>
+                                                </div>
+
+                                                {/* Difficulty breakdown */}
+                                                <div className="flex gap-4 text-xs">
+                                                    <div className="flex items-center gap-1.5">
+                                                        <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                                        <span className="text-slate-600 dark:text-slate-400">Easy</span>
+                                                        <span className="font-semibold text-slate-900 dark:text-white">{difficultyStats.easy.completed}/{difficultyStats.easy.total}</span>
+                                                    </div>
+                                                    <div className="flex items-center gap-1.5">
+                                                        <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                                                        <span className="text-slate-600 dark:text-slate-400">Med</span>
+                                                        <span className="font-semibold text-slate-900 dark:text-white">{difficultyStats.medium.completed}/{difficultyStats.medium.total}</span>
+                                                    </div>
+                                                    <div className="flex items-center gap-1.5">
+                                                        <span className="w-2 h-2 rounded-full bg-red-500"></span>
+                                                        <span className="text-slate-600 dark:text-slate-400">Hard</span>
+                                                        <span className="font-semibold text-slate-900 dark:text-white">{difficultyStats.hard.completed}/{difficultyStats.hard.total}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                <motion.form
+                                    action={logoutAction}
+                                    method="post"
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
+                                    className="w-full sm:w-auto flex justify-end"
+                                >
+                                    <motion.button
+                                        type="submit"
+                                        variants={buttonVariants}
+                                        initial="idle"
+                                        whileHover="hover"
+                                        whileTap="tap"
+                                        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-orange-500 text-white rounded-2xl font-semibold shadow-xl shadow-red-500/40 hover:shadow-2xl transition-shadow duration-300"
+                                        aria-label="Sign out"
+                                    >
+                                        <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                                            <path d="M17 16l4-4m0 0l-4-4m4 4H7" />
+                                            <path d="M7 8v-2a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h1a2 2 0 002-2v-2" />
                                         </svg>
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <span className="text-xl font-bold text-slate-900 dark:text-white">{progressPercentage}%</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="space-y-3">
-                                        <div>
-                                            <div className="text-2xl font-bold text-slate-900 dark:text-white">
-                                                {totalCompleted} / {totalQuestions}
-                                            </div>
-                                            <div className="text-sm text-slate-500 dark:text-slate-400">
-                                                Problems Solved
-                                            </div>
-                                        </div>
-
-                                        {/* Difficulty breakdown */}
-                                        <div className="flex gap-4 text-xs">
-                                            <div className="flex items-center gap-1.5">
-                                                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                                                <span className="text-slate-600 dark:text-slate-400">Easy</span>
-                                                <span className="font-semibold text-slate-900 dark:text-white">{difficultyStats.easy.completed}/{difficultyStats.easy.total}</span>
-                                            </div>
-                                            <div className="flex items-center gap-1.5">
-                                                <span className="w-2 h-2 rounded-full bg-amber-500"></span>
-                                                <span className="text-slate-600 dark:text-slate-400">Med</span>
-                                                <span className="font-semibold text-slate-900 dark:text-white">{difficultyStats.medium.completed}/{difficultyStats.medium.total}</span>
-                                            </div>
-                                            <div className="flex items-center gap-1.5">
-                                                <span className="w-2 h-2 rounded-full bg-red-500"></span>
-                                                <span className="text-slate-600 dark:text-slate-400">Hard</span>
-                                                <span className="font-semibold text-slate-900 dark:text-white">{difficultyStats.hard.completed}/{difficultyStats.hard.total}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        Sign out
+                                    </motion.button>
+                                </motion.form>
                             </div>
-                        </motion.div>
                     </motion.div>
 
                     {/* Topic Cards */}
