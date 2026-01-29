@@ -62,43 +62,128 @@ export default function PayClient() {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-slate-50 via-indigo-50/30 to-violet-50 dark:from-slate-950 dark:via-indigo-950/30 dark:to-violet-950 p-4">
+        <div className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50/30 to-violet-50 dark:from-slate-950 dark:via-indigo-950/30 dark:to-violet-950 p-4">
             <Script src="https://checkout.razorpay.com/v1/checkout.js" />
             <motion.div
                 initial="hidden"
                 animate="visible"
                 variants={pageVariants}
-                className="w-full max-w-lg"
+                className="mx-auto w-full max-w-5xl"
             >
-                <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl p-10 shadow-2xl shadow-indigo-500/10 border border-white/20 dark:border-slate-700/50">
-                    <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Unlock FusionPath</h2>
-                    <p className="text-slate-500 dark:text-slate-400 mb-8">
-                        Pay once to access the full Top 100 LeetCode dashboard.
-                    </p>
-                    <div className="flex items-center justify-between rounded-2xl border border-slate-200/60 dark:border-slate-700/60 bg-white/60 dark:bg-slate-900/60 px-6 py-4 mb-8">
-                        <div>
-                            <p className="text-sm text-slate-500 dark:text-slate-400">Price</p>
-                            <p className="text-2xl font-semibold text-slate-900 dark:text-white">₹10</p>
+                <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-start">
+                    <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl p-10 shadow-2xl shadow-indigo-500/10 border border-white/20 dark:border-slate-700/50">
+                        <div className="flex flex-wrap items-center gap-3 mb-4">
+                            <span className="inline-flex items-center rounded-full bg-indigo-100/80 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-200 px-3 py-1 text-xs font-semibold tracking-wide">
+                                One-time unlock
+                            </span>
+                            <span className="inline-flex items-center rounded-full bg-emerald-100/80 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-200 px-3 py-1 text-xs font-semibold tracking-wide">
+                                Lifetime access
+                            </span>
                         </div>
-                        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-400">
-                            One-time
-                        </span>
+                        <h2 className="text-4xl font-bold text-slate-900 dark:text-white leading-tight mb-4">
+                            Unlock FusionPath and finish the Top 100 with focus and momentum.
+                        </h2>
+                        <p className="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-8">
+                            FusionPath turns scattered practice into a clear, motivating journey. Track progress,
+                            revisit weak areas, and stay consistent with a dashboard that keeps you moving forward.
+                        </p>
+
+                        <div className="grid gap-4 sm:grid-cols-2 mb-8">
+                            {[
+                                "Guided Top 100 roadmap",
+                                "Progress saved across devices",
+                                "Topic-wise clarity & focus",
+                                "Stay accountable with streaks",
+                            ].map((item) => (
+                                <div
+                                    key={item}
+                                    className="flex items-start gap-3 rounded-2xl border border-slate-200/60 dark:border-slate-700/60 bg-white/70 dark:bg-slate-900/60 px-4 py-3"
+                                >
+                                    <span className="mt-1 h-2.5 w-2.5 rounded-full bg-indigo-500" />
+                                    <p className="text-sm text-slate-700 dark:text-slate-200 font-medium">
+                                        {item}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="rounded-2xl bg-indigo-50/80 dark:bg-indigo-500/10 border border-indigo-100/70 dark:border-indigo-500/30 p-5 mb-8">
+                            <p className="text-sm text-indigo-900 dark:text-indigo-100 font-semibold mb-2">
+                                Why people buy FusionPath
+                            </p>
+                            <ul className="text-sm text-indigo-800/80 dark:text-indigo-200/80 space-y-2">
+                                <li>• Stop guessing what to solve next.</li>
+                                <li>• Build confidence with visible wins.</li>
+                                <li>• Turn interview prep into a clear plan.</li>
+                            </ul>
+                        </div>
+
+                        <div className="grid gap-4 sm:grid-cols-3 mb-8">
+                            {[
+                                { title: "1-time payment", sub: "No subscriptions" },
+                                { title: "Secure checkout", sub: "Powered by Razorpay" },
+                                { title: "Instant access", sub: "Unlocks dashboard" },
+                            ].map((item) => (
+                                <div
+                                    key={item.title}
+                                    className="rounded-2xl border border-slate-200/60 dark:border-slate-700/60 bg-white/70 dark:bg-slate-900/60 px-4 py-4"
+                                >
+                                    <p className="text-sm font-semibold text-slate-900 dark:text-white">
+                                        {item.title}
+                                    </p>
+                                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                                        {item.sub}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="rounded-2xl border border-slate-200/60 dark:border-slate-700/60 bg-white/70 dark:bg-slate-900/60 px-6 py-5">
+                            <p className="text-sm font-semibold text-slate-900 dark:text-white mb-2">
+                                Quick answers
+                            </p>
+                            <div className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                                <p><span className="font-medium">Is this a subscription?</span> No, it’s a one-time unlock.</p>
+                                <p><span className="font-medium">How fast do I get access?</span> Immediately after payment verification.</p>
+                                <p><span className="font-medium">What if payment fails?</span> You won’t be charged. Try again or contact support.</p>
+                            </div>
+                        </div>
                     </div>
-                    <motion.button
-                        type="button"
-                        variants={buttonVariants}
-                        initial="idle"
-                        whileHover="hover"
-                        whileTap="tap"
-                        onClick={startCheckout}
-                        disabled={loading}
-                        className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-semibold text-base shadow-lg shadow-slate-900/20 dark:shadow-white/10 hover:shadow-xl transition-shadow duration-300 disabled:opacity-60"
-                    >
-                        {loading ? "Starting checkout..." : "Pay ₹10 to Continue"}
-                    </motion.button>
-                    <p className="text-xs text-slate-400 dark:text-slate-500 mt-6">
-                        If you face issues, contact admin at nextgenfusion.dev@gmail.com.
-                    </p>
+
+                    <div className="lg:sticky lg:top-6">
+                        <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl p-8 shadow-2xl shadow-indigo-500/10 border border-white/20 dark:border-slate-700/50">
+                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Unlock now</h3>
+                            <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
+                                One-time payment, lifetime dashboard access.
+                            </p>
+                            <div className="flex items-center justify-between rounded-2xl border border-slate-200/60 dark:border-slate-700/60 bg-white/60 dark:bg-slate-900/60 px-6 py-4 mb-6">
+                                <div>
+                                    <p className="text-sm text-slate-500 dark:text-slate-400">Price</p>
+                                    <p className="text-3xl font-semibold text-slate-900 dark:text-white">₹10</p>
+                                </div>
+                                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-400">
+                                    One-time
+                                </span>
+                            </div>
+                            <motion.button
+                                type="button"
+                                variants={buttonVariants}
+                                initial="idle"
+                                whileHover="hover"
+                                whileTap="tap"
+                                onClick={startCheckout}
+                                disabled={loading}
+                                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-semibold text-base shadow-lg shadow-slate-900/20 dark:shadow-white/10 hover:shadow-xl transition-shadow duration-300 disabled:opacity-60"
+                            >
+                                {loading ? "Starting checkout..." : "Pay ₹10 to Continue"}
+                            </motion.button>
+                            <div className="mt-6 space-y-3 text-xs text-slate-500 dark:text-slate-400">
+                                <p>🔒 Secure payment • Card / UPI / Netbanking</p>
+                                <p>✅ After payment, you are redirected to your dashboard.</p>
+                                <p>Need help? Email nextgenfusion.dev@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </motion.div>
         </div>
