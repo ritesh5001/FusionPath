@@ -73,8 +73,9 @@ export default function DashboardClient({
                                 <div className="absolute inset-0 rounded-4xl bg-linear-to-br from-indigo-500/30 via-violet-500/20 to-cyan-500/20 blur-3xl opacity-60" aria-hidden="true" />
                                 <div className="relative flex flex-col gap-6">
                                     <div className="flex flex-col gap-6">
-                                        <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-                                            <div className="relative w-28 h-28 shrink-0">
+                                        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+                                            <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+                                                <div className="relative w-28 h-28 shrink-0">
                                                 <svg className="w-28 h-28 transform -rotate-90" viewBox="0 0 96 96">
                                                     <circle
                                                         cx="48"
@@ -107,20 +108,18 @@ export default function DashboardClient({
                                                 <div className="absolute inset-0 flex items-center justify-center">
                                                     <span className="text-2xl font-semibold text-white">{progressPercentage}%</span>
                                                 </div>
-                                            </div>
-
-                                            <div className="space-y-2">
-                                                <p className="text-xs uppercase tracking-[0.35em] text-white/60">Completion</p>
-                                                <div className="text-3xl font-semibold text-white">
-                                                    {totalCompleted} / {totalQuestions}
                                                 </div>
-                                                <p className="text-sm text-white/70">Problems solved across all topics</p>
-                                            </div>
-                                        </div>
 
-                                        <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
-                                            <div />
-                                            <div className="space-y-3 text-right sm:justify-self-end">
+                                                <div className="space-y-2">
+                                                    <p className="text-xs uppercase tracking-[0.35em] text-white/60">Completion</p>
+                                                    <div className="text-3xl font-semibold text-white">
+                                                        {totalCompleted} / {totalQuestions}
+                                                    </div>
+                                                    <p className="text-sm text-white/70">Problems solved across all topics</p>
+                                                </div>
+                                            </div>
+
+                                            <div className="space-y-3 text-left lg:text-right">
                                                 <motion.h1
                                                     initial={{ opacity: 0, x: -20 }}
                                                     animate={{ opacity: 1, x: 0 }}
