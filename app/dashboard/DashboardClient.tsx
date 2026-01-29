@@ -80,7 +80,7 @@ export default function DashboardClient({
                                 transition={{ delay: 0.2, duration: 0.5 }}
                                 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-900 via-indigo-800 to-violet-800 dark:from-white dark:via-indigo-200 dark:to-violet-200 bg-clip-text text-transparent"
                             >
-                                LeetCode Tracker
+                                FusionPath
                             </motion.h1>
                             <motion.p
                                 initial={{ opacity: 0, x: -20 }}

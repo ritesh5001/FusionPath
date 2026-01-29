@@ -1,6 +1,6 @@
-# 🔥 Top 100 LeetCode Tracker
+# 🔥 FusionPath - Top 100 LeetCode Tracker
 
-Track your progress on the most important 100 LeetCode questions for cracking tech interviews (6-10 LPA).
+Master LeetCode and crack tech interviews with 100 curated questions (6-10 LPA).
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)

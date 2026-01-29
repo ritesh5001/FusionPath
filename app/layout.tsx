@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Top 100 LeetCode Tracker",
-  description: "Track your progress on the most important 100 LeetCode questions for 6-10 LPA jobs",
+  title: "FusionPath - Top 100 LeetCode Tracker",
+  description: "Track your progress on the most important 100 LeetCode questions for cracking tech interviews",
 };
 
 export default function RootLayout({
