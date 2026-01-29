@@ -149,47 +149,50 @@ export default function DashboardClient({
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-wrap gap-3">
-                                        {([
-                                            { label: "Easy", value: `${difficultyStats.easy.completed}/${difficultyStats.easy.total}`, color: "bg-emerald-400/70", dotColor: "bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.8)]" },
-                                            { label: "Medium", value: `${difficultyStats.medium.completed}/${difficultyStats.medium.total}`, color: "bg-amber-400/70", dotColor: "bg-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.8)]" },
-                                            { label: "Hard", value: `${difficultyStats.hard.completed}/${difficultyStats.hard.total}`, color: "bg-rose-400/70", dotColor: "bg-rose-400 shadow-[0_0_10px_rgba(244,63,94,0.8)]" },
-                                        ] as const).map(stat => (
-                                            <div key={stat.label} className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-white bg-white/10 ${stat.color}`}>
-                                                <span className={`w-2 h-2 rounded-full ${stat.dotColor}`} />
-                                                <span>{stat.label}</span>
-                                                <span className="text-white/70">{stat.value}</span>
-                                            </div>
-                                        ))}
+                                    <div className="flex flex-wrap items-center justify-between gap-3">
+                                        <div className="flex flex-wrap gap-3">
+                                            {([
+                                                { label: "Easy", value: `${difficultyStats.easy.completed}/${difficultyStats.easy.total}`, color: "bg-emerald-400/70", dotColor: "bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.8)]" },
+                                                { label: "Medium", value: `${difficultyStats.medium.completed}/${difficultyStats.medium.total}`, color: "bg-amber-400/70", dotColor: "bg-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.8)]" },
+                                                { label: "Hard", value: `${difficultyStats.hard.completed}/${difficultyStats.hard.total}`, color: "bg-rose-400/70", dotColor: "bg-rose-400 shadow-[0_0_10px_rgba(244,63,94,0.8)]" },
+                                            ] as const).map(stat => (
+                                                <div key={stat.label} className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-white bg-white/10 ${stat.color}`}>
+                                                    <span className={`w-2 h-2 rounded-full ${stat.dotColor}`} />
+                                                    <span>{stat.label}</span>
+                                                    <span className="text-white/70">{stat.value}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <motion.form
+                                            action={logoutAction}
+                                            method="post"
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
+                                            className="ml-auto"
+                                        >
+                                            <motion.button
+                                                type="submit"
+                                                variants={buttonVariants}
+                                                initial="idle"
+                                                whileHover="hover"
+                                                whileTap="tap"
+                                                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-semibold text-white backdrop-blur"
+                                            >
+                                                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                                                    <path d="M17 16l4-4m0 0l-4-4m4 4H7" />
+                                                    <path d="M7 8v-2a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h1a2 2 0 002-2v-2" />
+                                                </svg>
+                                                Sign out
+                                            </motion.button>
+                                        </motion.form>
                                     </div>
 
                                     <div className="text-sm text-slate-200/80">
                                         <span className="text-white/80">Overall progress</span> · {progressPercentage}% of the Top 100 set completed
                                     </div>
 
-                                    <motion.form
-                                        action={logoutAction}
-                                        method="post"
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
-                                        className="flex justify-end"
-                                    >
-                                        <motion.button
-                                            type="submit"
-                                            variants={buttonVariants}
-                                            initial="idle"
-                                            whileHover="hover"
-                                            whileTap="tap"
-                                            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-semibold text-white backdrop-blur"
-                                        >
-                                            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-                                                <path d="M17 16l4-4m0 0l-4-4m4 4H7" />
-                                                <path d="M7 8v-2a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2h1a2 2 0 002-2v-2" />
-                                            </svg>
-                                            Sign out
-                                        </motion.button>
-                                    </motion.form>
                                 </div>
                             </div>
                         </motion.div>
