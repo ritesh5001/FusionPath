@@ -63,14 +63,14 @@ export default function DashboardClient({
                     {/* Header Section */}
                     <motion.div
                         variants={headerVariants}
-                        className="flex flex-col lg:flex-row justify-between items-start lg:items-start gap-6"
+                        className="flex flex-col gap-10"
                     >
-                        <div className="space-y-2">
+                        <div className="space-y-2 max-w-2xl">
                             <motion.div
                                 initial={{ opacity: 0, y: -10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1, duration: 0.5 }}
-                                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-600 dark:text-orange-400 text-sm font-medium"
+                                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-600 text-sm font-medium"
                             >
                                 <span>🔥</span>
                                 <span>Top 100 LeetCode Questions</span>
@@ -79,7 +79,7 @@ export default function DashboardClient({
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.2, duration: 0.5 }}
-                                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-slate-900 via-indigo-800 to-violet-800 dark:from-white dark:via-indigo-200 dark:to-violet-200 bg-clip-text text-transparent"
+                                className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white"
                             >
                                 FusionPath
                             </motion.h1>
@@ -87,19 +87,19 @@ export default function DashboardClient({
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.3, duration: 0.5 }}
-                                className="text-slate-500 dark:text-slate-400 text-lg"
+                                className="text-base text-slate-600 dark:text-slate-300"
                             >
-                                Welcome back, <span className="font-medium text-slate-700 dark:text-slate-300">{userName}</span>
+                                Welcome back, <span className="font-semibold text-slate-800 dark:text-slate-100">{userName}</span>
                             </motion.p>
                         </div>
 
                         <motion.div
                             variants={statsVariants}
-                            className="relative w-full max-w-lg"
+                            className="w-full"
                         >
-                            <div className="absolute inset-0 rounded-[32px] bg-gradient-to-br from-indigo-500/40 via-violet-500/30 to-cyan-500/30 blur-3xl opacity-70" aria-hidden="true" />
-                            <div className="relative rounded-[32px] border border-white/10 bg-slate-950/90 p-6 shadow-[0_25px_60px_rgba(15,23,42,0.45)]">
-                                <div className="flex flex-col gap-6">
+                            <div className="relative rounded-[32px] border border-white/10 bg-slate-950/85 p-6 shadow-[0_30px_80px_rgba(15,23,42,0.6)]">
+                                <div className="absolute inset-0 rounded-[32px] bg-gradient-to-br from-indigo-500/30 via-violet-500/20 to-cyan-500/20 blur-3xl opacity-60" aria-hidden="true" />
+                                <div className="relative flex flex-col gap-6">
                                     <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
                                         <div className="relative w-28 h-28 flex-shrink-0">
                                             <svg className="w-28 h-28 transform -rotate-90" viewBox="0 0 96 96">
@@ -136,30 +136,30 @@ export default function DashboardClient({
                                             </div>
                                         </div>
 
-                                        <div className="flex-1 space-y-3">
-                                            <p className="text-sm uppercase tracking-[0.25em] text-white/60">Completion</p>
+                                        <div className="flex-1 space-y-2">
+                                            <p className="text-xs uppercase tracking-[0.35em] text-white/60">Completion</p>
                                             <div className="text-3xl font-semibold text-white">
                                                 {totalCompleted} / {totalQuestions}
                                             </div>
-                                            <p className="text-sm text-white/60">Problems solved across all topics</p>
+                                            <p className="text-sm text-white/70">Problems solved across all topics</p>
                                         </div>
                                     </div>
 
                                     <div className="flex flex-wrap gap-3">
                                         {([
-                                            { label: "Easy", value: `${difficultyStats.easy.completed}/${difficultyStats.easy.total}`, color: "bg-emerald-400/80" },
-                                            { label: "Medium", value: `${difficultyStats.medium.completed}/${difficultyStats.medium.total}`, color: "bg-amber-400/80" },
-                                            { label: "Hard", value: `${difficultyStats.hard.completed}/${difficultyStats.hard.total}`, color: "bg-rose-400/80" },
+                                            { label: "Easy", value: `${difficultyStats.easy.completed}/${difficultyStats.easy.total}`, color: "bg-emerald-400/70" },
+                                            { label: "Medium", value: `${difficultyStats.medium.completed}/${difficultyStats.medium.total}`, color: "bg-amber-400/70" },
+                                            { label: "Hard", value: `${difficultyStats.hard.completed}/${difficultyStats.hard.total}`, color: "bg-rose-400/70" },
                                         ] as const).map(stat => (
-                                            <div key={stat.label} className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-white bg-white/5 ${stat.color}`}>
-                                                <span className="w-2 h-2 rounded-full bg-white/80" />
+                                            <div key={stat.label} className={`flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-white bg-white/10 ${stat.color}`}>
+                                                <span className="w-2 h-2 rounded-full bg-white/90" />
                                                 <span>{stat.label}</span>
                                                 <span className="text-white/70">{stat.value}</span>
                                             </div>
                                         ))}
                                     </div>
 
-                                    <div className="text-sm text-slate-300">
+                                    <div className="text-sm text-slate-200/80">
                                         <span className="text-white/80">Overall progress</span> · {progressPercentage}% of the Top 100 set completed
                                     </div>
 
@@ -177,7 +177,7 @@ export default function DashboardClient({
                                             initial="idle"
                                             whileHover="hover"
                                             whileTap="tap"
-                                            className="inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 text-sm font-semibold text-white backdrop-blur"
+                                            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-semibold text-white backdrop-blur"
                                         >
                                             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
                                                 <path d="M17 16l4-4m0 0l-4-4m4 4H7" />
