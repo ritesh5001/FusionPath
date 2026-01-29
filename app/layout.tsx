@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "30-Day DSA Tracker",
-  description: "Track your DSA progress with our 30-day structured plan",
+  title: "Top 100 LeetCode Tracker",
+  description: "Track your progress on the most important 100 LeetCode questions for 6-10 LPA jobs",
 };
 
 export default function RootLayout({

@@ -5,6 +5,7 @@ import dbConnect from "@/lib/mongodb"
 import Question from "@/models/Question"
 import Progress from "@/models/Progress"
 import DashboardClient from "./DashboardClient"
+import { TOPICS } from "@/lib/data"
 
 export const dynamic = 'force-dynamic'
 
@@ -14,10 +15,10 @@ async function getData() {
 
     await dbConnect()
 
-    // Fetch all questions sorted by day
-    const questions = await Question.find({}).sort({ day: 1 }).lean() as any[]
+    // Fetch all questions sorted by number
+    const questions = await Question.find({}).sort({ number: 1 }).lean() as any[]
 
-    if (!session.user.id) return { user: session.user, questions: [], completedIds: [] } // Should handle better
+    if (!session.user.id) return { user: session.user, questions: [], completedIds: [] }
 
     // Fetch user progress
     const progress = await Progress.find({ userId: session.user.id }).lean() as any[]
@@ -46,28 +47,41 @@ export default async function Dashboard() {
 
     const { questions } = data
 
-    // Group by Day
-    const groupedByDay: Record<number, any[]> = {}
+    // Group by Topic
+    const groupedByTopic: Record<string, any[]> = {}
     questions.forEach(q => {
-        if (!groupedByDay[q.day]) groupedByDay[q.day] = []
-        groupedByDay[q.day].push(q)
+        if (!groupedByTopic[q.topic]) groupedByTopic[q.topic] = []
+        groupedByTopic[q.topic].push(q)
     })
 
-    // Sort days
-    const days = Object.keys(groupedByDay).map(Number).sort((a, b) => a - b)
+    // Get topics in correct order
+    const topics = TOPICS.map(t => t.name).filter(name => groupedByTopic[name])
 
     const totalCompleted = questions.filter(q => q.completed).length
     const totalQuestions = questions.length
     const progressPercentage = totalQuestions === 0 ? 0 : Math.round((totalCompleted / totalQuestions) * 100)
 
+    // Calculate stats per difficulty
+    const easyTotal = questions.filter(q => q.difficulty === 'Easy').length
+    const easyCompleted = questions.filter(q => q.difficulty === 'Easy' && q.completed).length
+    const mediumTotal = questions.filter(q => q.difficulty === 'Medium').length
+    const mediumCompleted = questions.filter(q => q.difficulty === 'Medium' && q.completed).length
+    const hardTotal = questions.filter(q => q.difficulty === 'Hard').length
+    const hardCompleted = questions.filter(q => q.difficulty === 'Hard' && q.completed).length
+
     return (
         <DashboardClient
             userName={data.user.name || "User"}
-            days={days}
-            groupedByDay={groupedByDay}
+            topics={topics}
+            groupedByTopic={groupedByTopic}
             totalCompleted={totalCompleted}
             totalQuestions={totalQuestions}
             progressPercentage={progressPercentage}
+            difficultyStats={{
+                easy: { total: easyTotal, completed: easyCompleted },
+                medium: { total: mediumTotal, completed: mediumCompleted },
+                hard: { total: hardTotal, completed: hardCompleted },
+            }}
         />
     )
 }

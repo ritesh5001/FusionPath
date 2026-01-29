@@ -55,11 +55,15 @@ export default function LoginClient({ signInAction }: LoginClientProps) {
                         transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
                         className="text-center mb-10"
                     >
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-600 dark:text-orange-400 text-xs font-medium mb-4">
+                            <span>🔥</span>
+                            <span>Top 100 Questions</span>
+                        </div>
                         <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white mb-3">
-                            30-Day DSA Tracker
+                            LeetCode Tracker
                         </h2>
                         <p className="text-slate-500 dark:text-slate-400 text-base">
-                            Master Data Structures & Algorithms
+                            Crack your next tech interview
                         </p>
                     </motion.div>
 
@@ -71,9 +75,9 @@ export default function LoginClient({ signInAction }: LoginClientProps) {
                         className="space-y-3 mb-10"
                     >
                         {[
-                            "Structured 30-day learning path",
-                            "Track your daily progress",
-                            "Curated problems by topic",
+                            "100 most asked interview questions",
+                            "Organized by topic & difficulty",
+                            "Track your solving progress",
                         ].map((feature, index) => (
                             <div key={index} className="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
                                 <div className="w-5 h-5 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center flex-shrink-0">

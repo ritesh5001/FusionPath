@@ -1,99 +1,129 @@
 
+export const TOPICS = [
+    { id: 1, name: "Arrays & Strings", icon: "📊", color: "from-blue-500 to-cyan-500" },
+    { id: 2, name: "Two Pointers / Sliding Window", icon: "👆", color: "from-violet-500 to-purple-500" },
+    { id: 3, name: "Linked Lists", icon: "🔗", color: "from-emerald-500 to-teal-500" },
+    { id: 4, name: "Stacks & Queues", icon: "📚", color: "from-orange-500 to-amber-500" },
+    { id: 5, name: "Trees & BST", icon: "🌳", color: "from-green-500 to-lime-500" },
+    { id: 6, name: "Graphs", icon: "🕸️", color: "from-pink-500 to-rose-500" },
+    { id: 7, name: "Dynamic Programming", icon: "🧩", color: "from-indigo-500 to-blue-500" },
+    { id: 8, name: "Greedy / Binary Search / Misc", icon: "🎯", color: "from-red-500 to-orange-500" },
+];
+
 export const QUESTIONS = [
-    // Day 1: Arrays
-    { day: 1, title: 'Two Sum', link: 'https://leetcode.com/problems/two-sum/', topic: 'Arrays' },
-    { day: 1, title: 'Maximum Subarray', link: 'https://leetcode.com/problems/maximum-subarray/', topic: 'Arrays' },
-    // Day 2: Arrays
-    { day: 2, title: 'Contains Duplicate', link: 'https://leetcode.com/problems/contains-duplicate/', topic: 'Arrays' },
-    { day: 2, title: 'Product of Array Except Self', link: 'https://leetcode.com/problems/product-of-array-except-self/', topic: 'Arrays' },
-    // Day 3: Arrays
-    { day: 3, title: 'Best Time to Buy and Sell Stock', link: 'https://leetcode.com/problems/best-time-to-buy-and-sell-stock/', topic: 'Arrays' },
-    { day: 3, title: 'Search in Rotated Sorted Array', link: 'https://leetcode.com/problems/search-in-rotated-sorted-array/', topic: 'Arrays' },
+    // Arrays & Strings (1-20)
+    { number: 1, title: "Two Sum", link: "https://leetcode.com/problems/two-sum/", topic: "Arrays & Strings", difficulty: "Easy" },
+    { number: 2, title: "Best Time to Buy and Sell Stock", link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/", topic: "Arrays & Strings", difficulty: "Easy" },
+    { number: 3, title: "Contains Duplicate", link: "https://leetcode.com/problems/contains-duplicate/", topic: "Arrays & Strings", difficulty: "Easy" },
+    { number: 4, title: "Product of Array Except Self", link: "https://leetcode.com/problems/product-of-array-except-self/", topic: "Arrays & Strings", difficulty: "Medium" },
+    { number: 5, title: "Maximum Subarray", link: "https://leetcode.com/problems/maximum-subarray/", topic: "Arrays & Strings", difficulty: "Medium" },
+    { number: 6, title: "Move Zeroes", link: "https://leetcode.com/problems/move-zeroes/", topic: "Arrays & Strings", difficulty: "Easy" },
+    { number: 7, title: "Majority Element", link: "https://leetcode.com/problems/majority-element/", topic: "Arrays & Strings", difficulty: "Easy" },
+    { number: 8, title: "Rotate Array", link: "https://leetcode.com/problems/rotate-array/", topic: "Arrays & Strings", difficulty: "Medium" },
+    { number: 9, title: "Valid Anagram", link: "https://leetcode.com/problems/valid-anagram/", topic: "Arrays & Strings", difficulty: "Easy" },
+    { number: 10, title: "Longest Common Prefix", link: "https://leetcode.com/problems/longest-common-prefix/", topic: "Arrays & Strings", difficulty: "Easy" },
+    { number: 11, title: "Reverse String", link: "https://leetcode.com/problems/reverse-string/", topic: "Arrays & Strings", difficulty: "Easy" },
+    { number: 12, title: "String to Integer (atoi)", link: "https://leetcode.com/problems/string-to-integer-atoi/", topic: "Arrays & Strings", difficulty: "Medium" },
+    { number: 13, title: "Implement strStr()", link: "https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/", topic: "Arrays & Strings", difficulty: "Easy" },
+    { number: 14, title: "Longest Palindromic Substring", link: "https://leetcode.com/problems/longest-palindromic-substring/", topic: "Arrays & Strings", difficulty: "Medium" },
+    { number: 15, title: "Valid Palindrome", link: "https://leetcode.com/problems/valid-palindrome/", topic: "Arrays & Strings", difficulty: "Easy" },
+    { number: 16, title: "Group Anagrams", link: "https://leetcode.com/problems/group-anagrams/", topic: "Arrays & Strings", difficulty: "Medium" },
+    { number: 17, title: "Encode and Decode Strings", link: "https://leetcode.com/problems/encode-and-decode-strings/", topic: "Arrays & Strings", difficulty: "Medium" },
+    { number: 18, title: "Roman to Integer", link: "https://leetcode.com/problems/roman-to-integer/", topic: "Arrays & Strings", difficulty: "Easy" },
+    { number: 19, title: "Integer to Roman", link: "https://leetcode.com/problems/integer-to-roman/", topic: "Arrays & Strings", difficulty: "Medium" },
+    { number: 20, title: "Zigzag Conversion", link: "https://leetcode.com/problems/zigzag-conversion/", topic: "Arrays & Strings", difficulty: "Medium" },
 
-    // Day 4: Strings
-    { day: 4, title: 'Valid Anagram', link: 'https://leetcode.com/problems/valid-anagram/', topic: 'Strings' },
-    { day: 4, title: 'Longest Substring Without Repeating Characters', link: 'https://leetcode.com/problems/longest-substring-without-repeating-characters/', topic: 'Strings' },
-    // Day 5: Strings
-    { day: 5, title: 'Valid Palindrome', link: 'https://leetcode.com/problems/valid-palindrome/', topic: 'Strings' },
-    { day: 5, title: 'Longest Palindromic Substring', link: 'https://leetcode.com/problems/longest-palindromic-substring/', topic: 'Strings' },
-    // Day 6: Strings
-    { day: 6, title: 'Group Anagrams', link: 'https://leetcode.com/problems/group-anagrams/', topic: 'Strings' },
-    { day: 6, title: 'Palindromic Substrings', link: 'https://leetcode.com/problems/palindromic-substrings/', topic: 'Strings' },
+    // Two Pointers / Sliding Window (21-30)
+    { number: 21, title: "Valid Parentheses", link: "https://leetcode.com/problems/valid-parentheses/", topic: "Two Pointers / Sliding Window", difficulty: "Easy" },
+    { number: 22, title: "Container With Most Water", link: "https://leetcode.com/problems/container-with-most-water/", topic: "Two Pointers / Sliding Window", difficulty: "Medium" },
+    { number: 23, title: "Longest Substring Without Repeating Characters", link: "https://leetcode.com/problems/longest-substring-without-repeating-characters/", topic: "Two Pointers / Sliding Window", difficulty: "Medium" },
+    { number: 24, title: "Minimum Window Substring", link: "https://leetcode.com/problems/minimum-window-substring/", topic: "Two Pointers / Sliding Window", difficulty: "Hard" },
+    { number: 25, title: "Remove Duplicates from Sorted Array", link: "https://leetcode.com/problems/remove-duplicates-from-sorted-array/", topic: "Two Pointers / Sliding Window", difficulty: "Easy" },
+    { number: 26, title: "Trapping Rain Water", link: "https://leetcode.com/problems/trapping-rain-water/", topic: "Two Pointers / Sliding Window", difficulty: "Hard" },
+    { number: 27, title: "3Sum", link: "https://leetcode.com/problems/3sum/", topic: "Two Pointers / Sliding Window", difficulty: "Medium" },
+    { number: 28, title: "3Sum Closest", link: "https://leetcode.com/problems/3sum-closest/", topic: "Two Pointers / Sliding Window", difficulty: "Medium" },
+    { number: 29, title: "Longest Repeating Character Replacement", link: "https://leetcode.com/problems/longest-repeating-character-replacement/", topic: "Two Pointers / Sliding Window", difficulty: "Medium" },
+    { number: 30, title: "Subarray Sum Equals K", link: "https://leetcode.com/problems/subarray-sum-equals-k/", topic: "Two Pointers / Sliding Window", difficulty: "Medium" },
 
-    // Day 7: Linked List
-    { day: 7, title: 'Reverse Linked List', link: 'https://leetcode.com/problems/reverse-linked-list/', topic: 'Linked List' },
-    { day: 7, title: 'Merge Two Sorted Lists', link: 'https://leetcode.com/problems/merge-two-sorted-lists/', topic: 'Linked List' },
-    // Day 8: Linked List
-    { day: 8, title: 'Linked List Cycle', link: 'https://leetcode.com/problems/linked-list-cycle/', topic: 'Linked List' },
-    { day: 8, title: 'Remove Nth Node From End of List', link: 'https://leetcode.com/problems/remove-nth-node-from-end-of-list/', topic: 'Linked List' },
-    // Day 9: Stack
-    { day: 9, title: 'Valid Parentheses', link: 'https://leetcode.com/problems/valid-parentheses/', topic: 'Stack' },
-    { day: 9, title: 'Min Stack', link: 'https://leetcode.com/problems/min-stack/', topic: 'Stack' },
-    // Day 10: Stack
-    { day: 10, title: 'Evaluate Reverse Polish Notation', link: 'https://leetcode.com/problems/evaluate-reverse-polish-notation/', topic: 'Stack' },
-    { day: 10, title: 'Daily Temperatures', link: 'https://leetcode.com/problems/daily-temperatures/', topic: 'Stack' },
+    // Linked Lists (31-40)
+    { number: 31, title: "Reverse Linked List", link: "https://leetcode.com/problems/reverse-linked-list/", topic: "Linked Lists", difficulty: "Easy" },
+    { number: 32, title: "Merge Two Sorted Lists", link: "https://leetcode.com/problems/merge-two-sorted-lists/", topic: "Linked Lists", difficulty: "Easy" },
+    { number: 33, title: "Linked List Cycle", link: "https://leetcode.com/problems/linked-list-cycle/", topic: "Linked Lists", difficulty: "Easy" },
+    { number: 34, title: "Linked List Cycle II", link: "https://leetcode.com/problems/linked-list-cycle-ii/", topic: "Linked Lists", difficulty: "Medium" },
+    { number: 35, title: "Remove Nth Node From End", link: "https://leetcode.com/problems/remove-nth-node-from-end-of-list/", topic: "Linked Lists", difficulty: "Medium" },
+    { number: 36, title: "Add Two Numbers", link: "https://leetcode.com/problems/add-two-numbers/", topic: "Linked Lists", difficulty: "Medium" },
+    { number: 37, title: "Intersection of Two Linked Lists", link: "https://leetcode.com/problems/intersection-of-two-linked-lists/", topic: "Linked Lists", difficulty: "Easy" },
+    { number: 38, title: "Palindrome Linked List", link: "https://leetcode.com/problems/palindrome-linked-list/", topic: "Linked Lists", difficulty: "Easy" },
+    { number: 39, title: "Reorder List", link: "https://leetcode.com/problems/reorder-list/", topic: "Linked Lists", difficulty: "Medium" },
+    { number: 40, title: "Copy List with Random Pointer", link: "https://leetcode.com/problems/copy-list-with-random-pointer/", topic: "Linked Lists", difficulty: "Medium" },
 
-    // Day 11: Binary Search
-    { day: 11, title: 'Binary Search', link: 'https://leetcode.com/problems/binary-search/', topic: 'Binary Search' },
-    { day: 11, title: 'Search a 2D Matrix', link: 'https://leetcode.com/problems/search-a-2d-matrix/', topic: 'Binary Search' },
-    // Day 12: Binary Search
-    { day: 12, title: 'Koko Eating Bananas', link: 'https://leetcode.com/problems/koko-eating-bananas/', topic: 'Binary Search' },
-    { day: 12, title: 'Find Minimum in Rotated Sorted Array', link: 'https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/', topic: 'Binary Search' },
-    // Day 13: Binary Search
-    { day: 13, title: 'Time Based Key-Value Store', link: 'https://leetcode.com/problems/time-based-key-value-store/', topic: 'Binary Search' },
-    { day: 13, title: 'Median of Two Sorted Arrays', link: 'https://leetcode.com/problems/median-of-two-sorted-arrays/', topic: 'Binary Search' },
-    // Day 14: Binary Search
-    { day: 14, title: 'Search in Rotated Sorted Array II', link: 'https://leetcode.com/problems/search-in-rotated-sorted-array-ii/', topic: 'Binary Search' },
-    { day: 14, title: 'Find First and Last Position of Element in Sorted Array', link: 'https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/', topic: 'Binary Search' },
-    // Day 15: Binary Search (Buffer/Review)
-    { day: 15, title: 'Maximum Random Binary Search Question', link: '#', topic: 'Binary Search' },
-    { day: 15, title: 'Review Binary Search', link: '#', topic: 'Binary Search' },
+    // Stacks & Queues (41-50)
+    { number: 41, title: "Min Stack", link: "https://leetcode.com/problems/min-stack/", topic: "Stacks & Queues", difficulty: "Medium" },
+    { number: 42, title: "Evaluate Reverse Polish Notation", link: "https://leetcode.com/problems/evaluate-reverse-polish-notation/", topic: "Stacks & Queues", difficulty: "Medium" },
+    { number: 43, title: "Daily Temperatures", link: "https://leetcode.com/problems/daily-temperatures/", topic: "Stacks & Queues", difficulty: "Medium" },
+    { number: 44, title: "Largest Rectangle in Histogram", link: "https://leetcode.com/problems/largest-rectangle-in-histogram/", topic: "Stacks & Queues", difficulty: "Hard" },
+    { number: 45, title: "Implement Queue using Stacks", link: "https://leetcode.com/problems/implement-queue-using-stacks/", topic: "Stacks & Queues", difficulty: "Easy" },
+    { number: 46, title: "Sliding Window Maximum", link: "https://leetcode.com/problems/sliding-window-maximum/", topic: "Stacks & Queues", difficulty: "Hard" },
+    { number: 47, title: "Simplify Path", link: "https://leetcode.com/problems/simplify-path/", topic: "Stacks & Queues", difficulty: "Medium" },
+    { number: 48, title: "Decode String", link: "https://leetcode.com/problems/decode-string/", topic: "Stacks & Queues", difficulty: "Medium" },
+    { number: 49, title: "Next Greater Element I", link: "https://leetcode.com/problems/next-greater-element-i/", topic: "Stacks & Queues", difficulty: "Easy" },
+    { number: 50, title: "Next Greater Element II", link: "https://leetcode.com/problems/next-greater-element-ii/", topic: "Stacks & Queues", difficulty: "Medium" },
 
-    // Day 16: Trees
-    { day: 16, title: 'Invert Binary Tree', link: 'https://leetcode.com/problems/invert-binary-tree/', topic: 'Trees' },
-    { day: 16, title: 'Maximum Depth of Binary Tree', link: 'https://leetcode.com/problems/maximum-depth-of-binary-tree/', topic: 'Trees' },
-    // Day 17: Trees
-    { day: 17, title: 'Diameter of Binary Tree', link: 'https://leetcode.com/problems/diameter-of-binary-tree/', topic: 'Trees' },
-    { day: 17, title: 'Balanced Binary Tree', link: 'https://leetcode.com/problems/balanced-binary-tree/', topic: 'Trees' },
-    // Day 18: Trees
-    { day: 18, title: 'Same Tree', link: 'https://leetcode.com/problems/same-tree/', topic: 'Trees' },
-    { day: 18, title: 'Subtree of Another Tree', link: 'https://leetcode.com/problems/subtree-of-another-tree/', topic: 'Trees' },
-    // Day 19: Trees
-    { day: 19, title: 'Lowest Common Ancestor of a BST', link: 'https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/', topic: 'Trees' },
-    { day: 19, title: 'Binary Tree Level Order Traversal', link: 'https://leetcode.com/problems/binary-tree-level-order-traversal/', topic: 'Trees' },
-    // Day 20: Trees
-    { day: 20, title: 'Validate Binary Search Tree', link: 'https://leetcode.com/problems/validate-binary-search-tree/', topic: 'Trees' },
-    { day: 20, title: 'Kth Smallest Element in a BST', link: 'https://leetcode.com/problems/kth-smallest-element-in-a-bst/', topic: 'Trees' },
-    // Day 21: Trees
-    { day: 21, title: 'Construct Binary Tree from Preorder and Inorder Traversal', link: 'https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/', topic: 'Trees' },
-    { day: 21, title: 'Binary Tree Right Side View', link: 'https://leetcode.com/problems/binary-tree-right-side-view/', topic: 'Trees' },
-    // Day 22: Trees
-    { day: 22, title: 'Count Good Nodes in Binary Tree', link: 'https://leetcode.com/problems/count-good-nodes-in-binary-tree/', topic: 'Trees' },
-    { day: 22, title: 'Serialize and Deserialize Binary Tree', link: 'https://leetcode.com/problems/serialize-and-deserialize-binary-tree/', topic: 'Trees' },
+    // Trees & BST (51-65)
+    { number: 51, title: "Binary Tree Inorder Traversal", link: "https://leetcode.com/problems/binary-tree-inorder-traversal/", topic: "Trees & BST", difficulty: "Easy" },
+    { number: 52, title: "Binary Tree Level Order Traversal", link: "https://leetcode.com/problems/binary-tree-level-order-traversal/", topic: "Trees & BST", difficulty: "Medium" },
+    { number: 53, title: "Maximum Depth of Binary Tree", link: "https://leetcode.com/problems/maximum-depth-of-binary-tree/", topic: "Trees & BST", difficulty: "Easy" },
+    { number: 54, title: "Diameter of Binary Tree", link: "https://leetcode.com/problems/diameter-of-binary-tree/", topic: "Trees & BST", difficulty: "Easy" },
+    { number: 55, title: "Invert Binary Tree", link: "https://leetcode.com/problems/invert-binary-tree/", topic: "Trees & BST", difficulty: "Easy" },
+    { number: 56, title: "Same Tree", link: "https://leetcode.com/problems/same-tree/", topic: "Trees & BST", difficulty: "Easy" },
+    { number: 57, title: "Subtree of Another Tree", link: "https://leetcode.com/problems/subtree-of-another-tree/", topic: "Trees & BST", difficulty: "Easy" },
+    { number: 58, title: "Lowest Common Ancestor of BST", link: "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/", topic: "Trees & BST", difficulty: "Medium" },
+    { number: 59, title: "Validate Binary Search Tree", link: "https://leetcode.com/problems/validate-binary-search-tree/", topic: "Trees & BST", difficulty: "Medium" },
+    { number: 60, title: "Kth Smallest Element in BST", link: "https://leetcode.com/problems/kth-smallest-element-in-a-bst/", topic: "Trees & BST", difficulty: "Medium" },
+    { number: 61, title: "Binary Tree Right Side View", link: "https://leetcode.com/problems/binary-tree-right-side-view/", topic: "Trees & BST", difficulty: "Medium" },
+    { number: 62, title: "Serialize and Deserialize Binary Tree", link: "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/", topic: "Trees & BST", difficulty: "Hard" },
+    { number: 63, title: "Path Sum", link: "https://leetcode.com/problems/path-sum/", topic: "Trees & BST", difficulty: "Easy" },
+    { number: 64, title: "Balanced Binary Tree", link: "https://leetcode.com/problems/balanced-binary-tree/", topic: "Trees & BST", difficulty: "Easy" },
+    { number: 65, title: "Construct Binary Tree from Preorder and Inorder", link: "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/", topic: "Trees & BST", difficulty: "Medium" },
 
-    // Day 23: Graphs
-    { day: 23, title: 'Number of Islands', link: 'https://leetcode.com/problems/number-of-islands/', topic: 'Graphs' },
-    { day: 23, title: 'Max Area of Island', link: 'https://leetcode.com/problems/max-area-of-island/', topic: 'Graphs' },
-    // Day 24: Graphs
-    { day: 24, title: 'Clone Graph', link: 'https://leetcode.com/problems/clone-graph/', topic: 'Graphs' },
-    { day: 24, title: 'Walls and Gates', link: 'https://leetcode.com/problems/walls-and-gates/', topic: 'Graphs' },
-    // Day 25: Graphs
-    { day: 25, title: 'Rotting Oranges', link: 'https://leetcode.com/problems/rotting-oranges/', topic: 'Graphs' },
-    { day: 25, title: 'Pacific Atlantic Water Flow', link: 'https://leetcode.com/problems/pacific-atlantic-water-flow/', topic: 'Graphs' },
-    // Day 26: Graphs
-    { day: 26, title: 'Surrounded Regions', link: 'https://leetcode.com/problems/surrounded-regions/', topic: 'Graphs' },
-    { day: 26, title: 'Course Schedule', link: 'https://leetcode.com/problems/course-schedule/', topic: 'Graphs' },
+    // Graphs (66-75)
+    { number: 66, title: "Number of Islands", link: "https://leetcode.com/problems/number-of-islands/", topic: "Graphs", difficulty: "Medium" },
+    { number: 67, title: "Clone Graph", link: "https://leetcode.com/problems/clone-graph/", topic: "Graphs", difficulty: "Medium" },
+    { number: 68, title: "Course Schedule", link: "https://leetcode.com/problems/course-schedule/", topic: "Graphs", difficulty: "Medium" },
+    { number: 69, title: "Course Schedule II", link: "https://leetcode.com/problems/course-schedule-ii/", topic: "Graphs", difficulty: "Medium" },
+    { number: 70, title: "Pacific Atlantic Water Flow", link: "https://leetcode.com/problems/pacific-atlantic-water-flow/", topic: "Graphs", difficulty: "Medium" },
+    { number: 71, title: "Rotting Oranges", link: "https://leetcode.com/problems/rotting-oranges/", topic: "Graphs", difficulty: "Medium" },
+    { number: 72, title: "Walls and Gates", link: "https://leetcode.com/problems/walls-and-gates/", topic: "Graphs", difficulty: "Medium" },
+    { number: 73, title: "Graph Valid Tree", link: "https://leetcode.com/problems/graph-valid-tree/", topic: "Graphs", difficulty: "Medium" },
+    { number: 74, title: "Cheapest Flights Within K Stops", link: "https://leetcode.com/problems/cheapest-flights-within-k-stops/", topic: "Graphs", difficulty: "Medium" },
+    { number: 75, title: "Word Ladder", link: "https://leetcode.com/problems/word-ladder/", topic: "Graphs", difficulty: "Hard" },
 
-    // Day 27: DP
-    { day: 27, title: 'Climbing Stairs', link: 'https://leetcode.com/problems/climbing-stairs/', topic: 'DP' },
-    { day: 27, title: 'Min Cost Climbing Stairs', link: 'https://leetcode.com/problems/min-cost-climbing-stairs/', topic: 'DP' },
-    // Day 28: DP
-    { day: 28, title: 'House Robber', link: 'https://leetcode.com/problems/house-robber/', topic: 'DP' },
-    { day: 28, title: 'House Robber II', link: 'https://leetcode.com/problems/house-robber-ii/', topic: 'DP' },
-    // Day 29: DP
-    { day: 29, title: 'Longest Palindromic Substring', link: 'https://leetcode.com/problems/longest-palindromic-substring/', topic: 'DP' },
-    { day: 29, title: 'Palindromic Substrings', link: 'https://leetcode.com/problems/palindromic-substrings/', topic: 'DP' },
-    // Day 30: DP
-    { day: 30, title: 'Decode Ways', link: 'https://leetcode.com/problems/decode-ways/', topic: 'DP' },
-    { day: 30, title: 'Coin Change', link: 'https://leetcode.com/problems/coin-change/', topic: 'DP' }
+    // Dynamic Programming (76-90)
+    { number: 76, title: "Climbing Stairs", link: "https://leetcode.com/problems/climbing-stairs/", topic: "Dynamic Programming", difficulty: "Easy" },
+    { number: 77, title: "House Robber", link: "https://leetcode.com/problems/house-robber/", topic: "Dynamic Programming", difficulty: "Medium" },
+    { number: 78, title: "House Robber II", link: "https://leetcode.com/problems/house-robber-ii/", topic: "Dynamic Programming", difficulty: "Medium" },
+    { number: 79, title: "Coin Change", link: "https://leetcode.com/problems/coin-change/", topic: "Dynamic Programming", difficulty: "Medium" },
+    { number: 80, title: "Longest Increasing Subsequence", link: "https://leetcode.com/problems/longest-increasing-subsequence/", topic: "Dynamic Programming", difficulty: "Medium" },
+    { number: 81, title: "Longest Common Subsequence", link: "https://leetcode.com/problems/longest-common-subsequence/", topic: "Dynamic Programming", difficulty: "Medium" },
+    { number: 82, title: "Partition Equal Subset Sum", link: "https://leetcode.com/problems/partition-equal-subset-sum/", topic: "Dynamic Programming", difficulty: "Medium" },
+    { number: 83, title: "Unique Paths", link: "https://leetcode.com/problems/unique-paths/", topic: "Dynamic Programming", difficulty: "Medium" },
+    { number: 84, title: "Jump Game", link: "https://leetcode.com/problems/jump-game/", topic: "Dynamic Programming", difficulty: "Medium" },
+    { number: 85, title: "Decode Ways", link: "https://leetcode.com/problems/decode-ways/", topic: "Dynamic Programming", difficulty: "Medium" },
+    { number: 86, title: "Maximum Product Subarray", link: "https://leetcode.com/problems/maximum-product-subarray/", topic: "Dynamic Programming", difficulty: "Medium" },
+    { number: 87, title: "Palindromic Substrings", link: "https://leetcode.com/problems/palindromic-substrings/", topic: "Dynamic Programming", difficulty: "Medium" },
+    { number: 88, title: "Edit Distance", link: "https://leetcode.com/problems/edit-distance/", topic: "Dynamic Programming", difficulty: "Medium" },
+    { number: 89, title: "Word Break", link: "https://leetcode.com/problems/word-break/", topic: "Dynamic Programming", difficulty: "Medium" },
+    { number: 90, title: "Burst Balloons", link: "https://leetcode.com/problems/burst-balloons/", topic: "Dynamic Programming", difficulty: "Hard" },
+
+    // Greedy / Binary Search / Misc (91-100)
+    { number: 91, title: "Binary Search", link: "https://leetcode.com/problems/binary-search/", topic: "Greedy / Binary Search / Misc", difficulty: "Easy" },
+    { number: 92, title: "Search in Rotated Sorted Array", link: "https://leetcode.com/problems/search-in-rotated-sorted-array/", topic: "Greedy / Binary Search / Misc", difficulty: "Medium" },
+    { number: 93, title: "Find Minimum in Rotated Sorted Array", link: "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/", topic: "Greedy / Binary Search / Misc", difficulty: "Medium" },
+    { number: 94, title: "Koko Eating Bananas", link: "https://leetcode.com/problems/koko-eating-bananas/", topic: "Greedy / Binary Search / Misc", difficulty: "Medium" },
+    { number: 95, title: "Meeting Rooms", link: "https://leetcode.com/problems/meeting-rooms/", topic: "Greedy / Binary Search / Misc", difficulty: "Easy" },
+    { number: 96, title: "Meeting Rooms II", link: "https://leetcode.com/problems/meeting-rooms-ii/", topic: "Greedy / Binary Search / Misc", difficulty: "Medium" },
+    { number: 97, title: "Gas Station", link: "https://leetcode.com/problems/gas-station/", topic: "Greedy / Binary Search / Misc", difficulty: "Medium" },
+    { number: 98, title: "Task Scheduler", link: "https://leetcode.com/problems/task-scheduler/", topic: "Greedy / Binary Search / Misc", difficulty: "Medium" },
+    { number: 99, title: "Merge Intervals", link: "https://leetcode.com/problems/merge-intervals/", topic: "Greedy / Binary Search / Misc", difficulty: "Medium" },
+    { number: 100, title: "Insert Interval", link: "https://leetcode.com/problems/insert-interval/", topic: "Greedy / Binary Search / Misc", difficulty: "Medium" },
 ];

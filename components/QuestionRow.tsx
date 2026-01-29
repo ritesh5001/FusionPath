@@ -10,13 +10,20 @@ interface QuestionRowProps {
     question: {
         _id: string
         questionId?: string
+        number?: number
         title: string
         link: string
         topic: string
-        day: number
+        difficulty?: string
         completed: boolean
     }
     index?: number
+}
+
+const difficultyColors = {
+    Easy: "bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800",
+    Medium: "bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800",
+    Hard: "bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 border-red-200 dark:border-red-800",
 }
 
 export function QuestionRow({ question, index = 0 }: QuestionRowProps) {
@@ -27,7 +34,7 @@ export function QuestionRow({ question, index = 0 }: QuestionRowProps) {
             variants={listItemVariants}
             initial="hidden"
             animate="visible"
-            transition={{ delay: index * 0.05 }}
+            transition={{ delay: index * 0.03 }}
             whileHover={{ x: 4, transition: { duration: 0.2 } }}
             className={`group flex items-center justify-between p-4 rounded-xl transition-all duration-200 border ${
                 question.completed
@@ -48,31 +55,38 @@ export function QuestionRow({ question, index = 0 }: QuestionRowProps) {
                     className="h-5 w-5 rounded-md border-2 border-slate-300 dark:border-slate-600 data-[state=checked]:bg-gradient-to-br data-[state=checked]:from-indigo-500 data-[state=checked]:to-violet-600 data-[state=checked]:border-transparent transition-all duration-200"
                 />
                 <div className="flex flex-col gap-0.5">
-                    <a
-                        href={question.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`font-medium transition-colors duration-200 ${
-                            question.completed
-                                ? 'text-slate-400 dark:text-slate-500 line-through decoration-slate-300 dark:decoration-slate-600'
-                                : 'text-slate-800 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-400'
-                        }`}
-                    >
-                        <span className="group-hover:underline underline-offset-2">{question.title}</span>
-                        <svg
-                            className="inline-block w-3.5 h-3.5 ml-1.5 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
+                    <div className="flex items-center gap-2">
+                        {question.number && (
+                            <span className="text-xs font-mono text-slate-400 dark:text-slate-500 min-w-[28px]">
+                                #{question.number}
+                            </span>
+                        )}
+                        <a
+                            href={question.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`font-medium transition-colors duration-200 ${
+                                question.completed
+                                    ? 'text-slate-400 dark:text-slate-500 line-through decoration-slate-300 dark:decoration-slate-600'
+                                    : 'text-slate-800 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-indigo-400'
+                            }`}
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                            />
-                        </svg>
-                    </a>
+                            <span className="group-hover:underline underline-offset-2">{question.title}</span>
+                            <svg
+                                className="inline-block w-3.5 h-3.5 ml-1.5 opacity-0 group-hover:opacity-100 transition-opacity text-slate-400"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -88,6 +102,12 @@ export function QuestionRow({ question, index = 0 }: QuestionRowProps) {
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                         </svg>
                     </motion.div>
+                )}
+
+                {question.difficulty && (
+                    <span className={`hidden sm:inline-flex items-center px-2 py-0.5 rounded text-xs font-medium border ${difficultyColors[question.difficulty as keyof typeof difficultyColors] || 'bg-slate-100 text-slate-600'}`}>
+                        {question.difficulty}
+                    </span>
                 )}
 
                 {question.completed && !isPending && (
