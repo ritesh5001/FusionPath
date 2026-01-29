@@ -15,6 +15,10 @@ export default function LoginPage() {
                 "use server"
                 await signIn("google", { redirectTo: "/dashboard" })
             }}
+            githubSignInAction={async () => {
+                "use server"
+                await signIn("github", { redirectTo: "/dashboard" })
+            }}
         />
     )
 }

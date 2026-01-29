@@ -1,6 +1,7 @@
 import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import Google from "next-auth/providers/google"
+import GitHub from "next-auth/providers/github"
 import { MongoDBAdapter } from "@auth/mongodb-adapter"
 import clientPromise from "@/lib/mongo-client"
 import dbConnect from "@/lib/mongodb"
@@ -14,6 +15,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
     providers: [
         Google({ allowDangerousEmailAccountLinking: true }),
+        GitHub({ allowDangerousEmailAccountLinking: true }),
         Credentials({
             name: "Credentials",
             credentials: {
