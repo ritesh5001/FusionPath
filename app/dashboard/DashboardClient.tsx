@@ -118,52 +118,16 @@ export default function DashboardClient({
                                             </div>
                                         </div>
 
-                                        <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
-                                            <div className="space-y-3">
-                                                <motion.h1
-                                                    initial={{ opacity: 0, x: -20 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ delay: 0.2, duration: 0.5 }}
-                                                    className="text-4xl md:text-5xl font-bold text-white"
-                                                >
-                                                    FusionPath
-                                                </motion.h1>
-                                                <motion.p
-                                                    initial={{ opacity: 0, x: -20 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ delay: 0.3, duration: 0.5 }}
-                                                    className="text-base text-white/70"
-                                                >
-                                                    Welcome back, <span className="font-semibold text-white">{userName}</span>
-                                                </motion.p>
-                                            </div>
-                                            <div className="space-y-3 text-right sm:justify-self-end">
-                                                <motion.h1
-                                                    initial={{ opacity: 0, x: -20 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ delay: 0.2, duration: 0.5 }}
-                                                    className="text-4xl md:text-5xl font-bold text-white"
-                                                >
-                                                    FusionPath
-                                                </motion.h1>
-                                                <motion.p
-                                                    initial={{ opacity: 0, x: -20 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ delay: 0.3, duration: 0.5 }}
-                                                    className="text-base text-white/70"
-                                                >
-                                                    Welcome back, <span className="font-semibold text-white">{userName}</span>
-                                                </motion.p>
-                                                <motion.div
-                                                    initial={{ opacity: 0, y: -10 }}
-                                                    animate={{ opacity: 1, y: 0 }}
-                                                    transition={{ delay: 0.35, duration: 0.5 }}
-                                                    className="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-linear-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-200 text-sm font-medium"
-                                                >
-                                                    <span>🔥</span>
-                                                    <span>Top 100 LeetCode Questions</span>
-                                                </motion.div>
-                                            </div>
+                                        <div className="grid gap-4 text-left sm:grid-cols-[1fr_auto] sm:items-center">
+                                            <motion.div
+                                                initial={{ opacity: 0, y: -10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{ delay: 0.35, duration: 0.5 }}
+                                                className="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-linear-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-200 text-sm font-medium"
+                                            >
+                                                <span>🔥</span>
+                                                <span>Top 100 LeetCode Questions</span>
+                                            </motion.div>
                                         </div>
                                     </div>
 
