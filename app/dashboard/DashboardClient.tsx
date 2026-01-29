@@ -118,7 +118,7 @@ export default function DashboardClient({
                                             </div>
                                         </div>
 
-                                        <div className="flex flex-col gap-4 text-left sm:flex-row sm:items-center sm:justify-between">
+                                        <div className="grid gap-4 text-left sm:grid-cols-[1fr_auto] sm:items-center">
                                             <div className="space-y-3">
                                                 <motion.h1
                                                     initial={{ opacity: 0, x: -20 }}
@@ -141,7 +141,7 @@ export default function DashboardClient({
                                                 initial={{ opacity: 0, y: -10 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 transition={{ delay: 0.35, duration: 0.5 }}
-                                                className="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-linear-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-200 text-sm font-medium sm:ml-auto"
+                                                className="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-linear-to-r from-orange-500/10 to-red-500/10 border border-orange-500/20 text-orange-200 text-sm font-medium"
                                             >
                                                 <span>🔥</span>
                                                 <span>Top 100 LeetCode Questions</span>
