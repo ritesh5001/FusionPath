@@ -4,6 +4,7 @@ import { redirect } from "next/navigation"
 import dbConnect from "@/lib/mongodb"
 import Question from "@/models/Question"
 import Progress from "@/models/Progress"
+import User from "@/models/User"
 import DashboardClient from "./DashboardClient"
 import { TOPICS } from "@/lib/data"
 
@@ -14,6 +15,11 @@ async function getData() {
     if (!session?.user) return null
 
     await dbConnect()
+
+    const userRecord = session.user.id ? await User.findById(session.user.id).lean() : null
+    if (!userRecord?.isPaid) {
+        return { needsPayment: true }
+    }
 
     // Fetch all questions sorted by number
     const questions = await Question.find({}).sort({ number: 1 }).lean() as any[]
@@ -45,7 +51,12 @@ export default async function Dashboard() {
         redirect("/login")
     }
 
-    const { questions } = data
+    if ("needsPayment" in data && data.needsPayment) {
+        redirect("/pay")
+    }
+
+    const questions = data.questions ?? []
+    const user = data.user
 
     // Group by Topic
     const groupedByTopic: Record<string, any[]> = {}
@@ -71,7 +82,7 @@ export default async function Dashboard() {
 
     return (
         <DashboardClient
-            userName={data.user.name || "User"}
+            userName={user?.name || "User"}
             topics={topics}
             groupedByTopic={groupedByTopic}
             totalCompleted={totalCompleted}

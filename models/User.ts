@@ -5,6 +5,10 @@ export interface IUser extends Document {
     email?: string;
     image?: string;
     emailVerified?: Date;
+    passwordHash?: string;
+    isPaid?: boolean;
+    paidAt?: Date;
+    paymentId?: string;
 }
 
 const UserSchema: Schema = new Schema({
@@ -12,6 +16,10 @@ const UserSchema: Schema = new Schema({
     email: { type: String, unique: true },
     image: { type: String },
     emailVerified: { type: Date },
+    passwordHash: { type: String },
+    isPaid: { type: Boolean, default: false },
+    paidAt: { type: Date },
+    paymentId: { type: String },
 }, { timestamps: true });
 
 const User: Model<IUser> = mongoose.models.User || mongoose.model<IUser>('User', UserSchema);

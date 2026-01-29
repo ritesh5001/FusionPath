@@ -5,9 +5,11 @@ import LoginClient from "./LoginClient"
 export default function LoginPage() {
     return (
         <LoginClient
-            signInAction={async () => {
+            signInAction={async (formData) => {
                 "use server"
-                await signIn("google", { redirectTo: "/dashboard" })
+                const email = String(formData.get("email") || "").trim()
+                const password = String(formData.get("password") || "")
+                await signIn("credentials", { email, password, redirectTo: "/dashboard" })
             }}
         />
     )

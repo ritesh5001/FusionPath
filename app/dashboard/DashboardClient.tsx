@@ -48,9 +48,9 @@ export default function DashboardClient({
         <div className="min-h-screen bg-linear-to-br from-slate-50 via-indigo-50/20 to-violet-50/30 dark:from-slate-950 dark:via-indigo-950/20 dark:to-violet-950/30">
             {/* Decorative background elements */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-200/20 dark:bg-indigo-900/10 rounded-full blur-3xl" />
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-violet-200/20 dark:bg-violet-900/10 rounded-full blur-3xl" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-200/10 dark:bg-cyan-900/5 rounded-full blur-3xl" />
+                <div className="absolute top-0 right-0 w-125 h-125 bg-indigo-200/20 dark:bg-indigo-900/10 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-125 h-125 bg-violet-200/20 dark:bg-violet-900/10 rounded-full blur-3xl" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 bg-cyan-200/10 dark:bg-cyan-900/5 rounded-full blur-3xl" />
             </div>
 
             <motion.main
