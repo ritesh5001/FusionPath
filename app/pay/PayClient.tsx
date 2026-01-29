@@ -12,7 +12,11 @@ declare global {
     }
 }
 
-export default function PayClient() {
+interface PayClientProps {
+    logoutAction: () => Promise<void>
+}
+
+export default function PayClient({ logoutAction }: PayClientProps) {
     const [loading, setLoading] = useState(false)
     const router = useRouter()
 
@@ -152,7 +156,17 @@ export default function PayClient() {
 
                     <div className="lg:sticky lg:top-6">
                         <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl p-8 shadow-2xl shadow-indigo-500/10 border border-white/20 dark:border-slate-700/50">
-                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Unlock now</h3>
+                            <div className="flex items-center justify-between mb-4">
+                                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Unlock now</h3>
+                                <form action={logoutAction} method="post">
+                                    <button
+                                        type="submit"
+                                        className="text-xs font-semibold text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors"
+                                    >
+                                        Log out
+                                    </button>
+                                </form>
+                            </div>
                             <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
                                 One-time payment, lifetime dashboard access.
                             </p>
