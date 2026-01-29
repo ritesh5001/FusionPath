@@ -17,10 +17,17 @@ export default function SignupPage() {
 
                 await dbConnect()
                 const existing = await User.findOne({ email })
-                if (existing) return
-
                 const passwordHash = await bcrypt.hash(password, 10)
-                await User.create({ name, email, passwordHash, isPaid: false })
+
+                if (existing) {
+                    if (!existing.passwordHash) {
+                        existing.name = existing.name || name
+                        existing.passwordHash = passwordHash
+                        await existing.save()
+                    }
+                } else {
+                    await User.create({ name, email, passwordHash, isPaid: false })
+                }
 
                 await signIn("credentials", { email, password, redirectTo: "/pay" })
             }}
