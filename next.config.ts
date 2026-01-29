@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
   },
   // Ensure environment variables are available
   env: {
-    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL ?? "https://fusionpath.riteshgiri.dev",
   },
 };
 
