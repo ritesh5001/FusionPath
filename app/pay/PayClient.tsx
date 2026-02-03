@@ -26,6 +26,7 @@ export default function PayClient() {
                 try {
                     const errorJson = await response.json()
                     errorMessage =
+                        errorJson?.details ||
                         errorJson?.razorpayError?.description ||
                         errorJson?.message ||
                         errorJson?.error ||

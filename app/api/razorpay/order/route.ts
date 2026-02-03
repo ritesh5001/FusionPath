@@ -49,8 +49,12 @@ export async function POST() {
         })
     } catch (error) {
         console.error("Razorpay order failed", error)
+        // Return the actual error message for debugging purposes
         return Response.json(
-            { error: "Razorpay order failed" },
+            {
+                error: "Razorpay order failed",
+                details: error instanceof Error ? error.message : String(error)
+            },
             { status: 500 }
         )
     }
