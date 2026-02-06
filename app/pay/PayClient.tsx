@@ -25,16 +25,24 @@ export default function PayClient() {
                 let errorMessage = "Failed to create order"
                 try {
                     const errorJson = await response.json()
+                    // Try to find a meaningful error message in common places
                     errorMessage =
                         errorJson?.details ||
-                        errorJson?.razorpayError?.description ||
-                        errorJson?.message ||
                         errorJson?.error ||
+                        errorJson?.message ||
+                        errorJson?.razorpayError?.description ||
                         errorMessage
                 } catch {
+                    // If JSON parsing fails, try text
                     const errorText = await response.text()
                     if (errorText) errorMessage = errorText
                 }
+
+                // Ensure errorMessage is a string
+                if (typeof errorMessage !== 'string') {
+                    errorMessage = JSON.stringify(errorMessage)
+                }
+
                 throw new Error(errorMessage)
             }
             const data = await response.json()

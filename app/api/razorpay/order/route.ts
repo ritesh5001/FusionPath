@@ -8,14 +8,15 @@ export const runtime = "nodejs"
 export async function POST() {
     const session = await auth()
     if (!session?.user?.id) {
-        return new Response("Unauthorized", { status: 401 })
+        return Response.json({ error: "Unauthorized" }, { status: 401 })
     }
 
     const keyId = process.env.RAZORPAY_KEY_ID
     const keySecret = process.env.RAZORPAY_KEY_SECRET
 
     if (!keyId || !keySecret) {
-        return new Response("Razorpay not configured", { status: 500 })
+        console.error("Razorpay keys are missing in .env")
+        return Response.json({ error: "Razorpay not configured. Please contact support." }, { status: 500 })
     }
 
     const amount = 10 * 100
@@ -47,13 +48,13 @@ export async function POST() {
             currency,
             keyId,
         })
-    } catch (error) {
+    } catch (error: any) {
         console.error("Razorpay order failed", error)
         // Return the actual error message for debugging purposes
         return Response.json(
             {
                 error: "Razorpay order failed",
-                details: error instanceof Error ? error.message : String(error)
+                details: error.message || "Unknown error occurred"
             },
             { status: 500 }
         )
