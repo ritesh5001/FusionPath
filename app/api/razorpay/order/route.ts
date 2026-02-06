@@ -49,12 +49,21 @@ export async function POST() {
             keyId,
         })
     } catch (error: any) {
-        console.error("Razorpay order failed", error)
-        // Return the actual error message for debugging purposes
+        console.error("Razorpay order failed", JSON.stringify(error, null, 2))
+
+        let errorMessage = "Unknown error occurred"
+        if (error.message) {
+            errorMessage = error.message
+        } else if (error.error && error.error.description) {
+            errorMessage = error.error.description
+        } else {
+            errorMessage = JSON.stringify(error)
+        }
+
         return Response.json(
             {
                 error: "Razorpay order failed",
-                details: error.message || "Unknown error occurred"
+                details: errorMessage
             },
             { status: 500 }
         )
